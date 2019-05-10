@@ -260,10 +260,10 @@ public class PayrollApi {
     }
 
     /**
-     * Allows you to retrieve deductions in a Xero organisation
-     * <p><b>200</b> - Success - return response of type Deductions array with 0 to N Deduction
-     * @param page e.g. page&#x3D;1 - Up to 100 deductions will be returned in a single API call.
-     * @return Deductions
+     * Allows you to retrieve earningsRates in a Xero organisation
+     * <p><b>200</b> - Success - return response of type EarningsRates array with 0 to N EarningsRate
+     * @param page e.g. page&#x3D;1 - Up to 100 earningsRates will be returned in a single API call.
+     * @return EarningsRates
      * @throws IOException if an error occurs while attempting to invoke the API
      **/
     public EarningsRates getEarningsRates(Integer page) throws IOException {
@@ -439,7 +439,7 @@ public class PayrollApi {
      * Allows you to retrieve all Pay Run Calendars
      * <p><b>200</b> - Success - return response of type PayRunCalendars array with all PayRunCalendar
      * @param page e.g. page&#x3D;1 - Up to 100 Pay Run Calendars will be returned in a single API call.
-     * @return PayRunCalendar
+     * @return PayRunCalendars
      * @throws IOException if an error occurs while attempting to invoke the API
      **/
     public PayRunCalendars getPayRunCalendars(Integer page) throws IOException {
@@ -469,7 +469,7 @@ public class PayrollApi {
     /**
      * Allows you to retrieve PaySlips in a Xero organisation
      * <p><b>200</b> - Success - return response of type PaySlips array with a unique PaySlip
-     * @param payRunID - Unique identifier for a PaySlip
+     * @param paySlipID - Unique identifier for a PaySlip
      * @return PaySlips
      * @throws IOException if an error occurs while attempting to invoke the API
      **/
