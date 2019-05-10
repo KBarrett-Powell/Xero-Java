@@ -3,13 +3,11 @@ package com.xero.api.exception;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.api.client.http.HttpResponseException;
 import com.xero.api.ApiClient;
-import com.xero.api.OAuthRequestResource;
 import com.xero.api.XeroApiException;
 import com.xero.api.XeroClientException;
 import com.xero.api.jaxb.XeroJAXBMarshaller;
 import com.xero.model.ApiException;
 import com.xero.models.accounting.Error;
-import com.xero.models.bankfeeds.Statements;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;

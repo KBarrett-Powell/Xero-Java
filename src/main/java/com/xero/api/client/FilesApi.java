@@ -3,7 +3,6 @@ package com.xero.api.client;
 import com.xero.api.ApiClient;
 
 import com.xero.models.files.Association;
-import java.io.File;
 import com.xero.models.files.FileObject;
 import com.xero.models.files.FileResponse204;
 import com.xero.models.files.Files;
@@ -15,7 +14,6 @@ import com.xero.api.exception.XeroExceptionHandler;
 import com.xero.model.*;
 import com.xero.api.*;
 
-import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 
 import org.apache.logging.log4j.LogManager;
@@ -25,7 +23,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

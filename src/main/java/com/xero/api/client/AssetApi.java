@@ -13,7 +13,6 @@ import com.xero.api.exception.XeroExceptionHandler;
 import com.xero.model.*;
 import com.xero.api.*;
 
-import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 
 import org.apache.logging.log4j.LogManager;
@@ -23,7 +22,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

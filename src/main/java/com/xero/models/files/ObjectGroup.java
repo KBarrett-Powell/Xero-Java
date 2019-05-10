@@ -10,12 +10,7 @@
  * Do not edit the class manually.
  */
 
-
 package com.xero.models.files;
-
-import java.util.Objects;
-import java.util.Arrays;
-import io.swagger.annotations.ApiModel;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;

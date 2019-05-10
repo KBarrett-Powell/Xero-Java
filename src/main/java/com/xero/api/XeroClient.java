@@ -1884,7 +1884,7 @@ public class XeroClient {
         requireNonNull(contentType, "contentType must not be null");
         requireNonNull(bytes, "bytes must not be null");
 
-        final HashMap<String, String> params = new HashMap();
+        final HashMap<String, String> params = new HashMap<String, String>();
         if (includeOnline) {
             params.put("IncludeOnline",  Boolean.toString(true));
         }
