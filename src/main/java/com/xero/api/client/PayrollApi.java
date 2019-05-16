@@ -248,9 +248,12 @@ public class PayrollApi {
     		}
 
     		String response = this.DATA(url, strBody, params, "GET");
+            String respcorrect = "{" + response.substring(response.indexOf("\"deductions\":"));
+            
+            System.out.println("**CORRECTED**" + respcorrect);
 
     		TypeReference<Deductions> typeRef = new TypeReference<Deductions>() {};
-    		return apiClient.getObjectMapper().readValue(response, typeRef);           
+    		return apiClient.getObjectMapper().readValue(respcorrect, typeRef);           
 
     	} catch (IOException e) {
     		throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -281,6 +284,37 @@ public class PayrollApi {
     		String response = this.DATA(url, strBody, params, "GET");
 
     		TypeReference<EarningsRates> typeRef = new TypeReference<EarningsRates>() {};
+    		return apiClient.getObjectMapper().readValue(response, typeRef);           
+
+    	} catch (IOException e) {
+    		throw xeroExceptionHandler.handleBadRequest(e.getMessage());
+    	} catch (XeroApiException e) {
+    		throw xeroExceptionHandler.handleBadRequest(e.getMessage(), e.getResponseCode(),JSONUtils.isJSONValid(e.getMessage()));
+    	}
+    }
+    
+    /**
+     * Allows you to retrieve employees in a Xero organisation
+     * <p><b>200</b> - Success - return response of type Employees array with 0 to N Employee
+     * @param page e.g. page&#x3D;1 - Up to 100 employees will be returned in a single API call.
+     * @return Employees
+     * @throws IOException if an error occurs while attempting to invoke the API
+     **/
+    public Employees getEmployees(Integer page) throws IOException {
+    	try {
+    		String strBody = null;
+    		Map<String, String> params = null;
+    		String correctPath = "/employees";
+    		UriBuilder uriBuilder = UriBuilder.fromUri(apiClient.getBasePath() + correctPath);
+    		String url = uriBuilder.build().toString();
+    		params = new HashMap<>();
+    		if (page != null) {
+    			addToMapIfNotNull(params, "page", page);
+    		}
+
+    		String response = this.DATA(url, strBody, params, "GET");
+
+    		TypeReference<Employees> typeRef = new TypeReference<Employees>() {};
     		return apiClient.getObjectMapper().readValue(response, typeRef);           
 
     	} catch (IOException e) {
@@ -359,13 +393,13 @@ public class PayrollApi {
     }
     
     /**
-     * Allows you to retrieve PayRuns in a Xero organisation
-     * <p><b>200</b> - Success - return response of type PayRuns array with a unique PayRun
-     * @param payRunID - Unique identifier for a PayRun
-     * @return PayRuns
+     * Allows you to retrieve PayRun in a Xero organisation
+     * <p><b>200</b> - Success - return response of type PayRun
+     * @param payRunID Unique identifier for a PayRun
+     * @return PayRun
      * @throws IOException if an error occurs while attempting to invoke the API
      **/
-     public PayRuns getPayRun(UUID payRunID) throws IOException {
+     public PayRun getPayRun(UUID payRunID) throws IOException {
          try {
              String strBody = null;
              Map<String, String> params = null;
@@ -386,9 +420,12 @@ public class PayrollApi {
 
              
              String response = this.DATA(url, strBody, params, "GET");
+             String respcorrect = response.substring(response.indexOf("\"payRun\":")+9, response.length() - 1);
+             
+             System.out.println("**CORRECTED**" + respcorrect);
 
-             TypeReference<PayRuns> typeRef = new TypeReference<PayRuns>() {};
-             return apiClient.getObjectMapper().readValue(response, typeRef);           
+             TypeReference<PayRun> typeRef = new TypeReference<PayRun>() {};
+             return apiClient.getObjectMapper().readValue(respcorrect, typeRef);           
 
          } catch (IOException e) {
              throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -400,9 +437,9 @@ public class PayrollApi {
     /**
      * Allows you to retrieve all PayRuns
      * <p><b>200</b> - Success - return response of type PayRuns array with all PayRun
-     * @param ifModifiedSince - Only records created or modified since this timestamp will be returned
-     * @param where - Filter by an any element
-     * @param order - Order by an any element
+     * @param ifModifiedSince Only records created or modified since this timestamp will be returned
+     * @param where Filter by an any element
+     * @param order Order by an any element
      * @param page e.g. page&#x3D;1 - Up to 100 PayRuns will be returned in a single API call.
      * @return PayRuns
      * @throws IOException if an error occurs while attempting to invoke the API
@@ -424,9 +461,12 @@ public class PayrollApi {
             }
 
     		String response = this.DATA(url, strBody, params, "GET", ifModifiedSince);
+            String respcorrect = "{" + response.substring(response.indexOf("\"payRuns\":"));
+            
+            System.out.println("**CORRECTED**" + respcorrect);
 
     		TypeReference<PayRuns> typeRef = new TypeReference<PayRuns>() {};
-    		return apiClient.getObjectMapper().readValue(response, typeRef);           
+    		return apiClient.getObjectMapper().readValue(respcorrect, typeRef);           
 
     	} catch (IOException e) {
     		throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -469,7 +509,7 @@ public class PayrollApi {
     /**
      * Allows you to retrieve PaySlips in a Xero organisation
      * <p><b>200</b> - Success - return response of type PaySlips array with a unique PaySlip
-     * @param paySlipID - Unique identifier for a PaySlip
+     * @param paySlipID Unique identifier for a PaySlip
      * @return PaySlips
      * @throws IOException if an error occurs while attempting to invoke the API
      **/
@@ -506,7 +546,7 @@ public class PayrollApi {
      /**
       * Allows you to retrieve SalaryAndWages for an employee
       * <p><b>200</b> - Success - return response of type SalaryAndWages array with a unique SalaryAndWage
-      * @param employeeID - Unique identifier for an employee
+      * @param employeeID Unique identifier for an employee
       * @param page e.g. page&#x3D;1 - Up to 100 Salary And Wages will be returned in a single API call.
       * @return SalaryAndWages
       * @throws IOException if an error occurs while attempting to invoke the API

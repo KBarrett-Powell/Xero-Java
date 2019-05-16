@@ -23,27 +23,27 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class PayRunCalendar {
 	
-  @JsonProperty("PayrollCalendarID")
+  @JsonProperty("payrollCalendarID")
   private UUID payrollCalendarID;
   
-  @JsonProperty("Name")
+  @JsonProperty("name")
   private String name;
 	
   /**
    * See Calendar Type
    */
   public enum TypeEnum {
-	  WEEKLY("WEEKLY"),
+	  WEEKLY("Weekly"),
 	  
-	  FORTNIGHTLY("FORTNIGHTLY"),
+	  FORTNIGHTLY("Fortnightly"),
 	  
-	  FOURWEEKLY("FOURWEEKLY"),
+	  FOURWEEKLY("FourWeekly"),
 	  
-	  MONTHLY("MONTHLY"),
+	  MONTHLY("Monthly"),
 	  
-	  ANNUAL("ANNUAL"),
+	  ANNUAL("Annual"),
 	  
-	  QUARTERLY("QUARTERLY");
+	  QUARTERLY("Quarterly");
 
     private String value;
 
@@ -72,26 +72,26 @@ public class PayRunCalendar {
     }
   }
 
-  @JsonProperty("CalendarType")
+  @JsonProperty("calendarType")
   private TypeEnum calendarType;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("PeriodStartDate")
+  @JsonProperty("periodStartDate")
   private OffsetDateTime periodStartDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("PeriodEndDate")
+  @JsonProperty("periodEndDate")
   private OffsetDateTime periodEndDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("PaymentDate")
+  @JsonProperty("paymentDate")
   private OffsetDateTime paymentDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("UpdatedDateUTC")
+  @JsonProperty("updatedDateUTC")
   private OffsetDateTime updatedDateUTC;
 
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -183,7 +183,7 @@ public class PayRunCalendar {
    * Payment Date of the calendar
    * @return paymentDate
   **/
-  @ApiModelProperty(value = "Payment Date of the calendar")
+  @ApiModelProperty(required = false, value = "Payment Date of the calendar")
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -199,7 +199,7 @@ public class PayRunCalendar {
    * UTC timestamp of the last update to the pay run calendar
    * @return updatedDateUTC
   **/
-  @ApiModelProperty(value = "UTC timestamp of the last update to the pay run calendar")
+  @ApiModelProperty(required = false, value = "UTC timestamp of the last update to the pay run calendar")
   public OffsetDateTime getUpdatedDateUTC() {
     return updatedDateUTC;
   }

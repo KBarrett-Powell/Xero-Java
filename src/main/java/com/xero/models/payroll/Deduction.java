@@ -22,31 +22,31 @@ import java.util.UUID;
 
 public class Deduction {
 	
-  @JsonProperty("DeductionId")
+  @JsonProperty("deductionId")
   private UUID deductionId;
   
-  @JsonProperty("DeductionName")
+  @JsonProperty("deductionName")
   private String deductionName;
   
   /**
    * See Deduction Categories
    */
   public enum CategoryEnum {
-	  STAKEHOLDERPENSION("STAKEHOLDERPENSION"),
+	  STAKEHOLDERPENSION("StakeholderPension"),
 	  
-	  STAKEHOLDERPENSIONPOSTTAX("STAKEHOLDERPENSIONPOSTTAX"),
+	  STAKEHOLDERPENSIONPOSTTAX("StakeholderPensionPostTax"),
 	  
-	  STUDENTLOANDEDUCTIONS("STUDENTLOANDEDUCTIONS"),
+	  STUDENTLOANDEDUCTIONS("StudentLoanDeductions"),
 	  
-	  POSTGRADUATELOANDEDUCTIONS("POSTGRADUATELOANDEDUCTIONS"),
+	  POSTGRADUATELOANDEDUCTIONS("PostgraduateLoanDeductions"),
 	  
-	  CHILDCAREVOUCHER("CHILDCAREVOUCHER"),
+	  CHILDCAREVOUCHER("ChildCareVoucher"),
 	  
-	  SALARYSACRIFICE("SALARYSACRIFICE"),
+	  SALARYSACRIFICE("SalarySacrifice"),
 	  
-	  UKOTHER("UKOTHER"),
+	  UKOTHER("UkOther"),
 	  
-	  OTHER("OTHER");
+	  OTHER("Other");
 
     private String value;
 
@@ -75,49 +75,49 @@ public class Deduction {
     }
   }
 
-  @JsonProperty("DeductionCategory")
+  @JsonProperty("deductionCategory")
   private CategoryEnum deductionCategory;
   
-  @JsonProperty("LiabilityAccountId")
+  @JsonProperty("liabilityAccountId")
   private UUID liabilityAccountId;
   
-  @JsonProperty("CurrentRecord")
+  @JsonProperty("currentRecord")
   private Boolean currentRecord;
   
-  @JsonProperty("StandardAmount")
+  @JsonProperty("standardAmount")
   private Double standardAmount;
   
-  @JsonProperty("ReducesSuperLiability")
+  @JsonProperty("reducesSuperLiability")
   private Boolean reducesSuperLiability;
   
-  @JsonProperty("ReducesTaxLiability")
+  @JsonProperty("reducesTaxLiability")
   private Boolean reducesTaxLiability;
   
-  @JsonProperty("CalculationType")
+  @JsonProperty("calculationType")
   private String calculationType;
   
-  @JsonProperty("Percentage")
+  @JsonProperty("percentage")
   private Double percentage;
   
-  @JsonProperty("SubjectToNIC")
+  @JsonProperty("subjectToNIC")
   private Boolean subjectToNIC;
   
-  @JsonProperty("SubjectToTax")
+  @JsonProperty("subjectToTax")
   private Boolean subjectToTax;
   
-  @JsonProperty("IsReducedByBasicRate")
+  @JsonProperty("isReducedByBasicRate")
   private Boolean isReducedByBasicRate;
   
-  @JsonProperty("ApplyToPensionCalculations")
+  @JsonProperty("applyToPensionCalculations")
   private Boolean applyToPensionCalculations;
   
-  @JsonProperty("IsCalculatingOnQualifyingEarnings")
+  @JsonProperty("isCalculatingOnQualifyingEarnings")
   private Boolean isCalculatingOnQualifyingEarnings;
   
-  @JsonProperty("IsPension")
+  @JsonProperty("isPension")
   private Boolean isPension;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -209,7 +209,7 @@ public class Deduction {
    * Standard amount of the deduction
    * @return standardAmount
   **/
-  @ApiModelProperty(value = "Standard amount of the deduction")
+  @ApiModelProperty(required = false, value = "Standard amount of the deduction")
   public Double getStandardAmount() {
     return standardAmount;
   }
@@ -225,7 +225,7 @@ public class Deduction {
    * Standard amount of the deduction
    * @return reducesSuperLiability
   **/
-  @ApiModelProperty(value = "Standard amount of the deduction")
+  @ApiModelProperty(required = false, value = "Standard amount of the deduction")
   public Boolean getReducesSuperLiability() {
     return reducesSuperLiability;
   }
@@ -241,7 +241,7 @@ public class Deduction {
    * Standard amount of the deduction
    * @return reducesTaxLiability
   **/
-  @ApiModelProperty(value = "Standard amount of the deduction")
+  @ApiModelProperty(required = false, value = "Standard amount of the deduction")
   public Boolean getReducesTaxLiability() {
     return reducesTaxLiability;
   }
@@ -257,7 +257,7 @@ public class Deduction {
    * Determines the calculation type, whether fixed amount or percentage of gross
    * @return calculationType
   **/
-  @ApiModelProperty(value = "Determines the calculation type, whether fixed amount or percentage of gross")
+  @ApiModelProperty(required = false, value = "Determines the calculation type, whether fixed amount or percentage of gross")
   public String getCalculationType() {
     return calculationType;
   }
@@ -273,7 +273,7 @@ public class Deduction {
    * Percentage of gross
    * @return percentage
   **/
-  @ApiModelProperty(value = "Percentage of gross")
+  @ApiModelProperty(required = false, value = "Percentage of gross")
   public Double getPercentage() {
     return percentage;
   }
@@ -289,7 +289,7 @@ public class Deduction {
    * Identifier of subject To NIC
    * @return subjectToNIC
   **/
-  @ApiModelProperty(value = "Identifier of subject To NIC")
+  @ApiModelProperty(required = false, value = "Identifier of subject To NIC")
   public Boolean getSubjectToNIC() {
      return subjectToNIC;
   }
@@ -305,7 +305,7 @@ public class Deduction {
    * Identifier of subject To Tax
    * @return subjectToTax
   **/
-  @ApiModelProperty(value = "Identifier of subject To Tax")
+  @ApiModelProperty(required = false, value = "Identifier of subject To Tax")
   public Boolean getSubjectToTax() {
     return subjectToTax;
   }
@@ -321,7 +321,7 @@ public class Deduction {
    * Identifier of reduced by basic rate applicable or not
    * @return isReducedByBasicRate
   **/
-  @ApiModelProperty(value = "Identifier of reduced by basic rate applicable or not")
+  @ApiModelProperty(required = false, value = "Identifier of reduced by basic rate applicable or not")
   public Boolean getIsReducedByBasicRate() {
     return isReducedByBasicRate;
   }
@@ -337,7 +337,7 @@ public class Deduction {
    * Identifier for apply to pension calculations
    * @return applyToPensionCalculations
   **/
-  @ApiModelProperty(value = "Identifier for apply to pension calculations")
+  @ApiModelProperty(required = false, value = "Identifier for apply to pension calculations")
   public Boolean getApplyToPensionCalculations() {
     return applyToPensionCalculations;
   }
@@ -353,7 +353,7 @@ public class Deduction {
    * Identifier of calculating on qualifying earnings
    * @return isCalculatingOnQualifyingEarnings
   **/
-  @ApiModelProperty(value = "Identifier of calculating on qualifying earnings")
+  @ApiModelProperty(required = false, value = "Identifier of calculating on qualifying earnings")
   public Boolean getIsCalculatingOnQualifyingEarnings() {
     return isCalculatingOnQualifyingEarnings;
   }
@@ -369,7 +369,7 @@ public class Deduction {
    * Identifier of applicable for pension or not
    * @return isPension
   **/
-  @ApiModelProperty(value = "Identifier of applicable for pension or not")
+  @ApiModelProperty(required = false, value = "Identifier of applicable for pension or not")
   public Boolean getIsPension() {
     return isPension;
   }

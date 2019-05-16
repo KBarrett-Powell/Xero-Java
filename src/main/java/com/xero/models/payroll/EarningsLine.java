@@ -18,25 +18,25 @@ import java.util.UUID;
 
 public class EarningsLine {
 	
-  @JsonProperty("EarningsRateID")
+  @JsonProperty("earningsRateID")
   private UUID earningsRateID;
   
-  @JsonProperty("RatePerUnit")
+  @JsonProperty("ratePerUnit")
   private Double ratePerUnit;
   
-  @JsonProperty("NumberOfUnits")
+  @JsonProperty("numberOfUnits")
   private Integer numberOfUnits;
   
-  @JsonProperty("FixedAmount")
+  @JsonProperty("fixedAmount")
   private Double fixedAmount;
   
-  @JsonProperty("Amount")
+  @JsonProperty("amount")
   private Double amount;
   
-  @JsonProperty("IsLinkedToTimesheet")
+  @JsonProperty("isLinkedToTimesheet")
   private Boolean isLinkedToTimesheet;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -64,7 +64,7 @@ public class EarningsLine {
     * Rate per unit for earnings line
 	* @return ratePerUnit
   **/
-  @ApiModelProperty(value = "Rate per unit for earnings line")
+  @ApiModelProperty(required = false, value = "Rate per unit for earnings line")
   public Double getRatePerUnit() {
 	 return ratePerUnit;
   }
@@ -80,7 +80,7 @@ public class EarningsLine {
     * Earnings number of units
 	* @return numberOfUnits
   **/
-  @ApiModelProperty(value = "Earnings number of units")
+  @ApiModelProperty(required = false, value = "Earnings number of units")
   public Integer getNumberOfUnits() {
 	 return numberOfUnits;
   }
@@ -96,7 +96,7 @@ public class EarningsLine {
     * Earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed
 	* @return fixedAmount
   **/
-  @ApiModelProperty(value = "Earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed")
+  @ApiModelProperty(required = false, value = "Earnings fixed amount. Only applicable if the EarningsRate RateType is Fixed")
   public Double getFixedAmount() {
 	 return fixedAmount;
   }

@@ -18,19 +18,22 @@ import java.util.UUID;
 
 public class TaxLine {
 	
-  @JsonProperty("TaxLineID")
+  @JsonProperty("taxLineID")
   private UUID taxLineID;
   
-  @JsonProperty("Description")
+  @JsonProperty("description")
   private String description;
   
-  @JsonProperty("IsEmployerTax")
+  @JsonProperty("isEmployerTax")
   private Boolean isEmployerTax;
   
-  @JsonProperty("Amount")
+  @JsonProperty("manualAdjustment")
+  private Boolean manualAdjustment;
+  
+  @JsonProperty("amount")
   private Double amount;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -80,6 +83,22 @@ public class TaxLine {
   }
   public void setIsEmployerTax(Boolean isEmployerTax) {
 	 this.isEmployerTax = isEmployerTax;
+  }
+  
+  public TaxLine manualAdjustment(Boolean manualAdjustment) {
+	 this.manualAdjustment = manualAdjustment;
+	 return this;
+  }
+  /**
+    * Identifies if the amount is a manual adjustment
+	* @return manualAdjustment
+  **/
+  @ApiModelProperty(value = "Identifies if the amount is a manual adjustment")
+  public Boolean getManualAdjustment() {
+	 return manualAdjustment;
+  }
+  public void setManualAdjustment(Boolean manualAdjustment) {
+	 this.manualAdjustment = manualAdjustment;
   }
   
   public TaxLine amount(Double amount) {

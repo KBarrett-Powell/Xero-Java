@@ -17,25 +17,25 @@ import java.util.List;
 
 public class OpeningBalances {
 	
-  @JsonProperty("StatutoryAdoptionPay")
+  @JsonProperty("statutoryAdoptionPay")
   private Double statutoryAdoptionPay;
   
-  @JsonProperty("StatutoryMaternityPay")
+  @JsonProperty("statutoryMaternityPay")
   private Double statutoryMaternityPay;
   
-  @JsonProperty("StatutoryPaternityPay")
+  @JsonProperty("statutoryPaternityPay")
   private Double statutoryPaternityPay;
   
-  @JsonProperty("StatutorySharedParentalPay")
+  @JsonProperty("statutorySharedParentalPay")
   private Double statutorySharedParentalPay;
   
-  @JsonProperty("StatutorySickPay")
+  @JsonProperty("statutorySickPay")
   private Double statutorySickPay;
   
-  @JsonProperty("PriorEmployeeNumber")
+  @JsonProperty("priorEmployeeNumber")
   private String priorEmployeeNumber;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -47,7 +47,7 @@ public class OpeningBalances {
 	* The total accumulated statutory adoption pay amount received by the employee for current fiscal year to date
 	* @return statutoryAdoptionPay
   **/
-  @ApiModelProperty(value = "The total accumulated statutory adoption pay amount received by the employee for current fiscal year to date")
+  @ApiModelProperty(required = false, value = "The total accumulated statutory adoption pay amount received by the employee for current fiscal year to date")
   public Double getStatutoryAdoptionPay() {
 	 return statutoryAdoptionPay;
   }
@@ -63,7 +63,7 @@ public class OpeningBalances {
    * The total accumulated statutory maternity pay amount received by the employee for current fiscal year to date
    * @return statutoryMaternityPay
   **/
-  @ApiModelProperty(value = "The total accumulated statutory maternity pay amount received by the employee for current fiscal year to date")
+  @ApiModelProperty(required = false, value = "The total accumulated statutory maternity pay amount received by the employee for current fiscal year to date")
   public Double getStatutoryMaternityPay() {
     return statutoryMaternityPay;
   }
@@ -79,7 +79,7 @@ public class OpeningBalances {
    * The total accumulated statutory paternity pay amount received by the employee for current fiscal year to date
    * @return statutoryPaternityPay
   **/
-  @ApiModelProperty(value = "The total accumulated statutory paternity pay amount received by the employee for current fiscal year to date")
+  @ApiModelProperty(required = false, value = "The total accumulated statutory paternity pay amount received by the employee for current fiscal year to date")
   public Double getStatutoryPaternityPay() {
     return statutoryPaternityPay;
   }
@@ -95,7 +95,7 @@ public class OpeningBalances {
    * The total accumulated statutory shared parental pay amount received by the employee for current fiscal year to date
    * @return statutorySharedParentalPay
   **/
-  @ApiModelProperty(value = "The total accumulated statutory shared parental pay amount received by the employee for current fiscal year to date")
+  @ApiModelProperty(required = false, value = "The total accumulated statutory shared parental pay amount received by the employee for current fiscal year to date")
   public Double getStatutorySharedParentalPay() {
     return statutorySharedParentalPay;
   }
@@ -111,7 +111,7 @@ public class OpeningBalances {
    * The total accumulated statutory sick pay amount received by the employee for current fiscal year to date
    * @return statutorySickPay
   **/
-  @ApiModelProperty(value = "The total accumulated statutory sick pay amount received by the employee for current fiscal year to date")
+  @ApiModelProperty(required = false, value = "The total accumulated statutory sick pay amount received by the employee for current fiscal year to date")
   public Double getStatutorySickPay() {
     return statutorySickPay;
   }
@@ -127,7 +127,7 @@ public class OpeningBalances {
    * The unique employee number issued by the employee's former employer
    * @return priorEmployeeNumber
   **/
-  @ApiModelProperty(value = "Phone number of the employee")
+  @ApiModelProperty(required = false, value = "The unique employee number issued by the employee's former employer")
   public String getPriorEmployeeNumber() {
     return priorEmployeeNumber;
   }

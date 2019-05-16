@@ -21,35 +21,38 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class SalaryAndWage {
 	
-  @JsonProperty("SalaryAndWagesID")
+  @JsonProperty("salaryAndWagesID")
   private UUID salaryAndWagesID;
   
-  @JsonProperty("EarningsRateID")
+  @JsonProperty("earningsRateID")
   private UUID earningsRateID;
   
-  @JsonProperty("NumberOfUnitsPerWeek")
+  @JsonProperty("numberOfUnitsPerWeek")
   private Double numberOfUnitsPerWeek;
   
-  @JsonProperty("RatePerUnit")
+  @JsonProperty("ratePerUnit")
   private Double ratePerUnit;
 	
-  @JsonProperty("NumberOfUnitsPerDay")
+  @JsonProperty("numberOfUnitsPerDay")
   private Double numberOfUnitsPerDay;
   
+  @JsonProperty("daysPerWeek")
+  private Double daysPerWeek;
+  
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("EffectiveFrom")
+  @JsonProperty("effectiveFrom")
   private OffsetDateTime effectiveFrom;
   
-  @JsonProperty("AnnualSalary")
+  @JsonProperty("annualSalary")
   private Double annualSalary;
   
-  @JsonProperty("Status")
+  @JsonProperty("status")
   private String status;
   
-  @JsonProperty("PaymentType")
+  @JsonProperty("paymentType")
   private String paymentType;
 
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -115,6 +118,22 @@ public class SalaryAndWage {
   }
   public void setRatePerUnit(Double ratePerUnit) {
 	this.ratePerUnit = ratePerUnit;
+  }
+  
+  public SalaryAndWage daysPerWeek(Double daysPerWeek) {
+	this.daysPerWeek = daysPerWeek;
+	return this;
+  }
+  /**
+	* Number of days per week
+	* @return daysPerWeek
+  **/
+  @ApiModelProperty(value = "Number of days per week")
+  public Double getDaysPerWeek() {
+	return daysPerWeek;
+  }
+  public void setDaysPerWeek(Double daysPerWeek) {
+	this.daysPerWeek = daysPerWeek;
   }
   
   public SalaryAndWage numberOfUnitsPerDay(Double numberOfUnitsPerDay) {
@@ -238,6 +257,7 @@ public class SalaryAndWage {
         Objects.equals(this.numberOfUnitsPerWeek, salaryAndWage.numberOfUnitsPerWeek) &&
         Objects.equals(this.ratePerUnit, salaryAndWage.ratePerUnit) &&
         Objects.equals(this.numberOfUnitsPerDay, salaryAndWage.numberOfUnitsPerDay) &&
+        Objects.equals(this.daysPerWeek, salaryAndWage.daysPerWeek) &&
         Objects.equals(this.effectiveFrom, salaryAndWage.effectiveFrom) &&
         Objects.equals(this.annualSalary, salaryAndWage.annualSalary) &&
         Objects.equals(this.status, salaryAndWage.status) &&
@@ -247,7 +267,7 @@ public class SalaryAndWage {
 
   @Override
   public int hashCode() {
-    return Objects.hash(salaryAndWagesID, earningsRateID, numberOfUnitsPerWeek, ratePerUnit, numberOfUnitsPerDay, effectiveFrom, annualSalary, status, paymentType, validationErrors);
+    return Objects.hash(salaryAndWagesID, earningsRateID, numberOfUnitsPerWeek, ratePerUnit, numberOfUnitsPerDay, daysPerWeek, effectiveFrom, annualSalary, status, paymentType, validationErrors);
   }
 
 
@@ -261,6 +281,7 @@ public class SalaryAndWage {
     sb.append("    numberOfUnitsPerWeek: ").append(toIndentedString(numberOfUnitsPerWeek)).append("\n");
     sb.append("    ratePerUnit: ").append(toIndentedString(ratePerUnit)).append("\n");
     sb.append("    numberOfUnitsPerDay: ").append(toIndentedString(numberOfUnitsPerDay)).append("\n");
+    sb.append("    daysPerWeek: ").append(toIndentedString(daysPerWeek)).append("\n");
     sb.append("    effectiveFrom: ").append(toIndentedString(effectiveFrom)).append("\n");
     sb.append("    annualSalary: ").append(toIndentedString(annualSalary)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

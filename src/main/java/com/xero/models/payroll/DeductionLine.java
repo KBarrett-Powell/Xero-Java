@@ -18,19 +18,19 @@ import java.util.UUID;
 
 public class DeductionLine {
 	
-  @JsonProperty("DeductionTypeID")
+  @JsonProperty("deductionTypeID")
   private UUID deductionTypeID;
   
-  @JsonProperty("Amount")
+  @JsonProperty("amount")
   private Double amount;
   
-  @JsonProperty("SubjectToTax")
+  @JsonProperty("subjectToTax")
   private Boolean subjectToTax;
   
-  @JsonProperty("Percentage")
+  @JsonProperty("percentage")
   private Double percentage;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -90,7 +90,7 @@ public class DeductionLine {
     * Deduction rate percentage
 	* @return percentage
   **/
-  @ApiModelProperty(value = "Deduction rate percentage")
+  @ApiModelProperty(required = false, value = "Deduction rate percentage")
   public Double getPercentage() {
 	 return percentage;
   }

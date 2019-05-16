@@ -23,37 +23,37 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class PayRun {
 	
-  @JsonProperty("PayRunID")
+  @JsonProperty("payRunID")
   private UUID payRunID;
   
-  @JsonProperty("PayrollCalendarID")
+  @JsonProperty("payrollCalendarID")
   private UUID payrollCalendarID;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("PeriodStartDate")
+  @JsonProperty("periodStartDate")
   private OffsetDateTime periodStartDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("PeriodEndDate")
+  @JsonProperty("periodEndDate")
   private OffsetDateTime periodEndDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("PaymentDate")
+  @JsonProperty("paymentDate")
   private OffsetDateTime paymentDate;
   
-  @JsonProperty("TotalCost")
+  @JsonProperty("totalCost")
   private Double totalCost;
   
-  @JsonProperty("TotalPay")
+  @JsonProperty("totalPay")
   private Double totalPay;
 	
   /**
    * See PayRun Status
    */
   public enum StatusEnum {
-    DRAFT("DRAFT"),
+    DRAFT("Draft"),
     
-    POSTED("POSTED");
+    POSTED("Posted");
 
     private String value;
 
@@ -82,18 +82,18 @@ public class PayRun {
     }
   }
 
-  @JsonProperty("PayRunStatus")
+  @JsonProperty("payRunStatus")
   private StatusEnum payRunStatus;
   
   /**
    * See PayRun Type
    */
   public enum TypeEnum {
-	SCHEDULED("SCHEDULED"),
+	SCHEDULED("Scheduled"),
     
-	UNSCHEDULED("UNSCHEDULED"),
+	UNSCHEDULED("Unscheduled"),
 	
-	EARLIERYEARUPDATE("EARLIERYEARUPDATE");
+	EARLIERYEARUPDATE("EarlierYearUpdate");
 
     private String value;
 
@@ -122,7 +122,7 @@ public class PayRun {
     }
   }
 
-  @JsonProperty("PayRunType")
+  @JsonProperty("payRunType")
   private TypeEnum payRunType;
   
   /**
@@ -168,23 +168,23 @@ public class PayRun {
     }
   }
 
-  @JsonProperty("CalendarType")
+  @JsonProperty("calendarType")
   private CalTypeEnum calendarType;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("PostedDateTime")
+  @JsonProperty("postedDateTime")
   private OffsetDateTime postedDateTime;
   
-  @JsonProperty("PayslipMessage")
-  private String payslipMessage;
-  
-  @JsonProperty("PaySlips")
+  @JsonProperty("paySlips")
   private List<PaySlip> paySlips;
   
-  @JsonProperty("InvalidPayeeIDs")
+  @JsonProperty("payslipMessage")
+  private String payslipMessage;
+  
+  @JsonProperty("invalidPayeeIDs")
   private String invalidPayeeIDs;
 
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -242,7 +242,7 @@ public class PayRun {
    * Payment Date
    * @return paymentDate
   **/
-  @ApiModelProperty(value = "Payment Date")
+  @ApiModelProperty(required = false, value = "Payment Date")
   public OffsetDateTime getPaymentDate() {
     return paymentDate;
   }
@@ -317,7 +317,7 @@ public class PayRun {
    * Posted Date Time
    * @return postedDateTime
   **/
-  @ApiModelProperty(value = "Posted Date Time")
+  @ApiModelProperty(required = false, value = "Posted Date Time")
   public OffsetDateTime getPostedDateTime() {
     return postedDateTime;
   }
@@ -330,7 +330,7 @@ public class PayRun {
 	* Payslip message - optional
 	* @return payslipMessage
   **/
-  @ApiModelProperty(value = "Payslip message - optional")
+  @ApiModelProperty(required = false, value = "Payslip message - optional")
   public String getPayslipMessage() {
 	return payslipMessage;
   }
@@ -346,7 +346,7 @@ public class PayRun {
     * Payslips
 	* @return paySlips
   **/
-  @ApiModelProperty(value = "Payslips")
+  @ApiModelProperty(required = false, value = "Payslips")
   public List<PaySlip> getPaySlips() {
 	return paySlips;
   }
@@ -362,7 +362,7 @@ public class PayRun {
 	* Invalid Payee IDs
 	* @return invalidPayeeIDs
   **/
-  @ApiModelProperty(value = "Invalid Payee IDs")
+  @ApiModelProperty(required = false, value = "Invalid Payee IDs")
   public String getInvalidPayeeIDs() {
 	return invalidPayeeIDs;
   }

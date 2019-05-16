@@ -21,95 +21,95 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class PaySlip {
 	
-  @JsonProperty("PaySlipID")
+  @JsonProperty("paySlipID")
   private UUID paySlipID;
   
-  @JsonProperty("EmployeeID")
+  @JsonProperty("employeeID")
   private UUID employeeID;
   
-  @JsonProperty("PayRunID")
+  @JsonProperty("payRunID")
   private UUID payRunID;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("LastEdited")
+  @JsonProperty("lastEdited")
   private OffsetDateTime lastEdited;
   
-  @JsonProperty("FirstName")
+  @JsonProperty("firstName")
   private String firstName;
   
-  @JsonProperty("LastName")
+  @JsonProperty("lastName")
   private String lastName;
   
-  @JsonProperty("TotalEarnings")
+  @JsonProperty("totalEarnings")
   private Double totalEarnings;
   
-  @JsonProperty("GrossEarnings")
+  @JsonProperty("grossEarnings")
   private Double grossEarnings;
   
-  @JsonProperty("TotalPay")
+  @JsonProperty("totalPay")
   private Double totalPay;
   
-  @JsonProperty("TotalEmployerTaxes")
+  @JsonProperty("totalEmployerTaxes")
   private Double totalEmployerTaxes;
   
-  @JsonProperty("TotalEmployeeTaxes")
+  @JsonProperty("totalEmployeeTaxes")
   private Double totalEmployeeTaxes;
   
-  @JsonProperty("TotalDeductions")
+  @JsonProperty("totalDeductions")
   private Double totalDeductions;
   
-  @JsonProperty("TotalReimbursements")
+  @JsonProperty("totalReimbursements")
   private Double totalReimbursements;
   
-  @JsonProperty("TotalCourtOrders")
+  @JsonProperty("totalCourtOrders")
   private Double totalCourtOrders;
   
-  @JsonProperty("TotalBenefits")
+  @JsonProperty("totalBenefits")
   private Double totalBenefits;
   
-  @JsonProperty("TotalStatutoryDeductions")
+  @JsonProperty("totalStatutoryDeductions")
   private Double totalStatutoryDeductions;
   
-  @JsonProperty("BacsHash")
+  @JsonProperty("bacsHash")
   private String bacsHash;
   
-  @JsonProperty("PaymentMethod")
+  @JsonProperty("paymentMethod")
   private String paymentMethod;
   
-  @JsonProperty("EarningsLines")
+  @JsonProperty("earningsLines")
   private List<EarningsLine> earningsLines;
   
-  @JsonProperty("LeaveEarningsLines")
+  @JsonProperty("leaveEarningsLines")
   private List<EarningsLine> leaveEarningsLines;
   
-  @JsonProperty("TimesheetEarningsLines")
+  @JsonProperty("timesheetEarningsLines")
   private List<EarningsLine> timesheetEarningsLines;
   
-  @JsonProperty("DeductionLines")
+  @JsonProperty("deductionLines")
   private List<DeductionLine> deductionLines;
   
-  @JsonProperty("ReimbursementLines")
+  @JsonProperty("reimbursementLines")
   private List<ReimbursementLine> reimbursementLines;
   
-  @JsonProperty("LeaveAccrualLines")
+  @JsonProperty("leaveAccrualLines")
   private List<LeaveAccrualLine> leaveAccrualLines;
   
-  @JsonProperty("BenefitLines")
+  @JsonProperty("benefitLines")
   private List<BenefitLine> benefitLines;
   
-  @JsonProperty("PaymentLines")
+  @JsonProperty("paymentLines")
   private List<PaymentLine> paymentLines;
   
-  @JsonProperty("EmployeeTaxLines")
+  @JsonProperty("employeeTaxLines")
   private List<TaxLine> employeeTaxLines;
   
-  @JsonProperty("EmployerTaxLines")
+  @JsonProperty("employerTaxLines")
   private List<TaxLine> employerTaxLines;
   
-  @JsonProperty("CourtOrderLines")
+  @JsonProperty("courtOrderLines")
   private List<CourtOrderLine> courtOrderLines;
 	
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -153,7 +153,7 @@ public class PaySlip {
 	* The Xero identifier for the associated payrun
 	* @return payRunID
   **/
-  @ApiModelProperty(value = "The Xero identifier for the associated payrun")
+  @ApiModelProperty(required = false, value = "The Xero identifier for the associated payrun")
   public UUID getPayRunID() {
 	return payRunID;
   }
@@ -362,7 +362,7 @@ public class PaySlip {
    * Total amount subtracted from an employee's earnings to reach total pay
    * @return totalStatutoryDeductions
   **/
-  @ApiModelProperty(value = "Total amount subtracted from an employee's earnings to reach total pay")
+  @ApiModelProperty(required = false, value = "Total amount subtracted from an employee's earnings to reach total pay")
   public Double getTotalStatutoryDeductions() {
     return totalStatutoryDeductions;
   }
@@ -378,7 +378,7 @@ public class PaySlip {
    * BACS Service User Number
    * @return bacsHash
   **/
-  @ApiModelProperty(value = "Bacs Hash")
+  @ApiModelProperty(required = false, value = "BACS Service User Number")
   public String getBacsHash() {
     return bacsHash;
   }
@@ -410,7 +410,7 @@ public class PaySlip {
     * See EarningsLines
 	* @return earningsLines
   **/
-  @ApiModelProperty(value = "See EarningsLines")
+  @ApiModelProperty(required = false, value = "See EarningsLines")
   public List<EarningsLine> getEarningsLines() {
 	return earningsLines;
   }
@@ -426,7 +426,7 @@ public class PaySlip {
     * See LeaveEarningsLines
 	* @return leaveEarningsLines
   **/
-  @ApiModelProperty(value = "See LeaveEarningsLines")
+  @ApiModelProperty(required = false, value = "See LeaveEarningsLines")
   public List<EarningsLine> getLeaveEarningsLines() {
 	return leaveEarningsLines;
   }
@@ -442,7 +442,7 @@ public class PaySlip {
     * See TimesheetEarningsLines
 	* @return timesheetEarningsLines
   **/
-  @ApiModelProperty(value = "See TimesheetEarningsLines")
+  @ApiModelProperty(required = false, value = "See TimesheetEarningsLines")
   public List<EarningsLine> getTimesheetEarningsLines() {
 	return timesheetEarningsLines;
   }
@@ -458,7 +458,7 @@ public class PaySlip {
     * See DeductionLines
 	* @return deductionLines
   **/
-  @ApiModelProperty(value = "See DeductionLines")
+  @ApiModelProperty(required = false, value = "See DeductionLines")
   public List<DeductionLine> getDeductionLines() {
 	return deductionLines;
   }
@@ -474,7 +474,7 @@ public class PaySlip {
     * See ReimbursementLines
 	* @return reimbursementLines
   **/
-  @ApiModelProperty(value = "See ReimbursementLines")
+  @ApiModelProperty(required = false, value = "See ReimbursementLines")
   public List<ReimbursementLine> getReimbursementLines() {
 	return reimbursementLines;
   }
@@ -490,7 +490,7 @@ public class PaySlip {
     * See LeaveAccrualLines
 	* @return leaveAccrualLines
   **/
-  @ApiModelProperty(value = "See LeaveAccrualLines")
+  @ApiModelProperty(required = false, value = "See LeaveAccrualLines")
   public List<LeaveAccrualLine> getLeaveAccrualLines() {
 	return leaveAccrualLines;
   }
@@ -506,7 +506,7 @@ public class PaySlip {
     * See BenefitLines
 	* @return benefitLines
   **/
-  @ApiModelProperty(value = "See BenefitLines")
+  @ApiModelProperty(required = false, value = "See BenefitLines")
   public List<BenefitLine> getBenefitLines() {
 	return benefitLines;
   }
@@ -522,7 +522,7 @@ public class PaySlip {
     * See PaymentLines
 	* @return paymentLines
   **/
-  @ApiModelProperty(value = "See PaymentLines")
+  @ApiModelProperty(required = false, value = "See PaymentLines")
   public List<PaymentLine> getPaymentLines() {
 	return paymentLines;
   }
@@ -538,7 +538,7 @@ public class PaySlip {
     * See EmployeeTaxLines
 	* @return employeeTaxLines
   **/
-  @ApiModelProperty(value = "See EmployeeTaxLines")
+  @ApiModelProperty(required = false, value = "See EmployeeTaxLines")
   public List<TaxLine> getEmployeeTaxLines() {
 	return employeeTaxLines;
   }
@@ -554,7 +554,7 @@ public class PaySlip {
     * See EmployerTaxLines
 	* @return employerTaxLines
   **/
-  @ApiModelProperty(value = "See EmployerTaxLines")
+  @ApiModelProperty(required = false, value = "See EmployerTaxLines")
   public List<TaxLine> getEmployerTaxLines() {
 	return employerTaxLines;
   }
@@ -570,7 +570,7 @@ public class PaySlip {
     * See CourtOrderLines
 	* @return courtOrderLines
   **/
-  @ApiModelProperty(value = "See CourtOrderLines")
+  @ApiModelProperty(required = false, value = "See CourtOrderLines")
   public List<CourtOrderLine> getCourtOrderLines() {
 	return courtOrderLines;
   }

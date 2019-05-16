@@ -18,19 +18,19 @@ import java.util.UUID;
 
 public class LeaveBalance {
 	
-  @JsonProperty("Name")
+  @JsonProperty("name")
   private String name;
   
-  @JsonProperty("LeaveTypeID")
+  @JsonProperty("leaveTypeID")
   private UUID leaveTypeID;
   
-  @JsonProperty("Balance")
+  @JsonProperty("balance")
   private Double balance;
   
-  @JsonProperty("TypeOfUnits")
+  @JsonProperty("typeOfUnits")
   private String typeOfUnits;
  
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   

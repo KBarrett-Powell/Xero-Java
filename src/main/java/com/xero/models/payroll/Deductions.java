@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Deductions {
   
-  @JsonProperty("Deductions")
+  @JsonProperty("deductions")
   private List<Deduction> deductions = null;
 
   public Deductions deductions(List<Deduction> deductions) {

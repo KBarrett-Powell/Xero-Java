@@ -25,20 +25,20 @@ import org.threeten.bp.OffsetDateTime;
 
 public class LeaveType {
 	
-  @JsonProperty("LeaveTypeID")
+  @JsonProperty("leaveTypeID")
   private UUID leaveTypeID;
   
   /**
    * See ScheduleOfAccrual Codes
    */
   public enum CodesEnum {
-	BEGINNINGOFCALENDARYEAR("BEGINNINGOFCALENDARYEAR"),
+	BEGINNINGOFCALENDARYEAR("BeginningOfCalendarYear"),
 	
-	ONANNIVERSARYDATE("ONANNIVERSARYDATE"),
+	ONANNIVERSARYDATE("OnAnniversaryDate"),
 	
-	EACHPAYPERIOD("EACHPAYPERIOD"),
+	EACHPAYPERIOD("EachPayPeriod"),
     
-    ONHOURWORKED("ONHOURWORKED");
+    ONHOURWORKED("OnHourWorked");
 
     private String value;
 
@@ -67,38 +67,38 @@ public class LeaveType {
     }
   }
 
-  @JsonProperty("ScheduleOfAccrual")
+  @JsonProperty("scheduleOfAccrual")
   private CodesEnum scheduleOfAccrual;
   
-  @JsonProperty("Name")
+  @JsonProperty("name")
   private String name;
   
-  @JsonProperty("HoursAccruedAnnually")
+  @JsonProperty("hoursAccruedAnnually")
   private Double hoursAccruedAnnually;
   
-  @JsonProperty("MaximumToAccrue")
+  @JsonProperty("maximumToAccrue")
   private Double maximumToAccrue;
   
-  @JsonProperty("OpeningBalance")
+  @JsonProperty("openingBalance")
   private Double openingBalance;
   
-  @JsonProperty("RateAccruedHourly")
+  @JsonProperty("rateAccruedHourly")
   private Double rateAccruedHourly;
   
-  @JsonProperty("IsPaidLeave")
+  @JsonProperty("isPaidLeave")
   private Boolean isPaidLeave;
   
-  @JsonProperty("ShowOnPayslip")
+  @JsonProperty("showOnPayslip")
   private Boolean showOnPayslip;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("UpdatedDateUTC")
+  @JsonProperty("updatedDateUTC")
   private OffsetDateTime updatedDateUTC;
   
-  @JsonProperty("IsStatutoryLeave")
+  @JsonProperty("isStatutoryLeave")
   private Boolean isStatutoryLeave;
  
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -158,7 +158,7 @@ public class LeaveType {
 	* The number of hours accrued for the leave annually. This is 0 when the scheduleOfAccrual chosen is "OnHourWorked"
 	* @return hoursAccruedAnnually
   **/
-  @ApiModelProperty(value = "The number of hours accrued for the leave annually. This is 0 when the scheduleOfAccrual chosen is 'OnHourWorked'")
+  @ApiModelProperty(required = false, value = "The number of hours accrued for the leave annually. This is 0 when the scheduleOfAccrual chosen is 'OnHourWorked'")
   public Double getHoursAccruedAnnually() {
 	 return hoursAccruedAnnually;
   }
@@ -174,7 +174,7 @@ public class LeaveType {
    * The maximum number of hours that can be accrued for the leave
    * @return maximumToAccrue
   **/
-  @ApiModelProperty(value = "The maximum number of hours that can be accrued for the leave")
+  @ApiModelProperty(required = false, value = "The maximum number of hours that can be accrued for the leave")
   public Double getMaximumToAccrue() {
     return maximumToAccrue;
   }
@@ -190,7 +190,7 @@ public class LeaveType {
    * The initial number of hours assigned when the leave was added to the employee
    * @return openingBalance
   **/
-  @ApiModelProperty(value = "The initial number of hours assigned when the leave was added to the employee")
+  @ApiModelProperty(required = false, value = "The initial number of hours assigned when the leave was added to the employee")
   public Double getOpeningBalance() {
     return openingBalance;
   }
@@ -206,7 +206,7 @@ public class LeaveType {
    * The number of hours added to the leave balance for every hour worked by the employee. This is normally 0, unless the scheduleOfAccrual chosen is "OnHourWorked"
    * @return rateAccruedHourly
   **/
-  @ApiModelProperty(value = "The number of hours added to the leave balance for every hour worked by the employee. This is normally 0, unless the scheduleOfAccrual chosen is 'OnHourWorked'")
+  @ApiModelProperty(required = false, value = "The number of hours added to the leave balance for every hour worked by the employee. This is normally 0, unless the scheduleOfAccrual chosen is 'OnHourWorked'")
   public Double getRateAccruedHourly() {
     return rateAccruedHourly;
   }

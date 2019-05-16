@@ -16,7 +16,7 @@ import java.util.List;
 
 public class LeaveBalances {
   
-  @JsonProperty("LeaveBalances")
+  @JsonProperty("leaveBalances")
   private List<LeaveBalance> leaveBalances = null;
 
   public LeaveBalances leaveBalances(List<LeaveBalance> leaveBalances) {

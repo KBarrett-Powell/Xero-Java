@@ -18,22 +18,22 @@ import java.util.UUID;
 
 public class PaymentLine {
 	
-  @JsonProperty("PaymentLineID")
+  @JsonProperty("paymentLineID")
   private UUID paymentLineID;
   
-  @JsonProperty("Amount")
+  @JsonProperty("amount")
   private Double amount;
   
-  @JsonProperty("AccountNumber")
+  @JsonProperty("accountNumber")
   private String accountNumber;
   
-  @JsonProperty("SortCode")
+  @JsonProperty("sortCode")
   private String sortCode;
   
-  @JsonProperty("AccountName")
+  @JsonProperty("accountName")
   private String accountName;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -77,7 +77,7 @@ public class PaymentLine {
     * The account number
 	* @return accountNumber
   **/
-  @ApiModelProperty(value = "The account number")
+  @ApiModelProperty(required = false, value = "The account number")
   public String getAccountNumber() {
 	 return accountNumber;
   }
@@ -93,7 +93,7 @@ public class PaymentLine {
     * The account sort code
 	* @return sortCode
   **/
-  @ApiModelProperty(value = "The account sort code")
+  @ApiModelProperty(required = false, value = "The account sort code")
   public String getSortCode() {
 	 return sortCode;
   }
@@ -109,7 +109,7 @@ public class PaymentLine {
     * The account name
 	* @return accountName
   **/
-  @ApiModelProperty(value = "The account name")
+  @ApiModelProperty(required = false, value = "The account name")
   public String getAccountName() {
 	 return accountName;
   }

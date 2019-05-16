@@ -1,6 +1,5 @@
 /*
- * Xero Assets API
- * This the Xero Assets API
+ * Payroll API
  *
  * OpenAPI spec version: 1.0.0
  * Contact: api@xero.com

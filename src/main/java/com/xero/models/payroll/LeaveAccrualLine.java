@@ -18,13 +18,13 @@ import java.util.UUID;
 
 public class LeaveAccrualLine {
 	
-  @JsonProperty("LeaveTypeID")
+  @JsonProperty("leaveTypeID")
   private UUID leaveTypeID;
   
-  @JsonProperty("NumberOfUnits")
+  @JsonProperty("numberOfUnits")
   private Double numberOfUnits;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -52,7 +52,7 @@ public class LeaveAccrualLine {
     * Leave accrual number of units
 	* @return numberOfUnits
   **/
-  @ApiModelProperty(value = "Leave accrual number of units")
+  @ApiModelProperty(required = false, value = "Leave accrual number of units")
   public Double getNumberOfUnits() {
 	 return numberOfUnits;
   }

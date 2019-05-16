@@ -16,7 +16,7 @@ import java.util.List;
 
 public class LeaveTypes {
   
-  @JsonProperty("LeaveTypes")
+  @JsonProperty("leaveTypes")
   private List<LeaveType> leaveTypes = null;
 
   public LeaveTypes leaveTypes(List<LeaveType> leaveTypes) {

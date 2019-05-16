@@ -16,7 +16,7 @@ import java.util.List;
 
 public class LeavePeriods {
   
-  @JsonProperty("LeavePeriods")
+  @JsonProperty("leavePeriods")
   private List<LeavePeriod> leavePeriods = null;
 
   public LeavePeriods leavePeriods(List<LeavePeriod> leavePeriods) {

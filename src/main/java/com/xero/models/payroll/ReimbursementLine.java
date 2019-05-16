@@ -18,16 +18,16 @@ import java.util.UUID;
 
 public class ReimbursementLine {
 	
-  @JsonProperty("ReimbursementTypeID")
+  @JsonProperty("reimbursementTypeID")
   private UUID reimbursementTypeID;
   
-  @JsonProperty("Description")
+  @JsonProperty("description")
   private String description;
   
-  @JsonProperty("Amount")
+  @JsonProperty("amount")
   private Double amount;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -55,7 +55,7 @@ public class ReimbursementLine {
     * Reimbursement line description
 	* @return description
   **/
-  @ApiModelProperty(value = "Reimbursement line description")
+  @ApiModelProperty(required = false, value = "Reimbursement line description")
   public String getDescription() {
 	 return description;
   }

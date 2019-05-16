@@ -16,7 +16,7 @@ import java.util.List;
 
 public class EarningsRates {
   
-  @JsonProperty("EarningsRates")
+  @JsonProperty("earningsRates")
   private List<EarningsRate> earningsRates = null;
 
   public EarningsRates earningsRates(List<EarningsRate> earningsRates) {

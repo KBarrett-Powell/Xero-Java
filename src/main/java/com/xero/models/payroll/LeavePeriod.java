@@ -25,23 +25,23 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 public class LeavePeriod {
 	
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("PeriodStartDate")
+  @JsonProperty("periodStartDate")
   private OffsetDateTime periodStartDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("PeriodEndDate")
+  @JsonProperty("periodEndDate")
   private OffsetDateTime periodEndDate;
   
-  @JsonProperty("NumberOfUnits")
+  @JsonProperty("numberOfUnits")
   private Double numberOfUnits;
   
   /**
    * See periodStatustatus
    */
   public enum StatusEnum {
-	APPROVED("APPROVED"),
+	APPROVED("Approved"),
     
-	COMPLETED("COMPLETED");
+	COMPLETED("Completed");
 
     private String value;
 
@@ -73,7 +73,7 @@ public class LeavePeriod {
   @JsonProperty("periodStatus")
   private StatusEnum periodStatus;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   

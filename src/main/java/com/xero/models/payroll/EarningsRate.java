@@ -18,37 +18,37 @@ import java.util.UUID;
 
 public class EarningsRate {
 	
-  @JsonProperty("EarningsRateID")
+  @JsonProperty("earningsRateID")
   private UUID earningsRateID;
   
-  @JsonProperty("Name")
+  @JsonProperty("name")
   private String name;
   
-  @JsonProperty("EarningsType")
+  @JsonProperty("earningsType")
   private String earningsType;
   
-  @JsonProperty("RateType")
+  @JsonProperty("rateType")
   private String rateType;
   
-  @JsonProperty("TypeOfUnits")
+  @JsonProperty("typeOfUnits")
   private String typeOfUnits;
   
-  @JsonProperty("CurrentRecord")
+  @JsonProperty("currentRecord")
   private Boolean currentRecord;
   
-  @JsonProperty("ExpenseAccountID")
+  @JsonProperty("expenseAccountID")
   private UUID expenseAccountID;
   
-  @JsonProperty("RatePerUnit")
+  @JsonProperty("ratePerUnit")
   private Double ratePerUnit;
   
-  @JsonProperty("MultipleOfOrdinaryEarningsRate")
+  @JsonProperty("multipleOfOrdinaryEarningsRate")
   private Double multipleOfOrdinaryEarningsRate;
   
   @JsonProperty("fixedAmount")
   private Double fixedAmount;
 	
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -124,7 +124,7 @@ public class EarningsRate {
    * The type of units used to record earnings
    * @return typeOfUnits
   **/
-  @ApiModelProperty(value = "The type of units used to record earnings")
+  @ApiModelProperty(required = false, value = "The type of units used to record earnings")
   public String getTypeOfUnits() {
     return typeOfUnits;
   }
@@ -156,7 +156,7 @@ public class EarningsRate {
    * The account that will be used for the earnings rate
    * @return expenseAccountID
   **/
-  @ApiModelProperty(value = "The account that will be used for the earnings rate")
+  @ApiModelProperty(required = true, value = "The account that will be used for the earnings rate")
   public UUID getExpenseAccountID() {
     return expenseAccountID;
   }
@@ -172,7 +172,7 @@ public class EarningsRate {
     * Default rate per unit (optional). Only applicable if RateType is RatePerUnit
 	* @return ratePerUnit
   **/
-  @ApiModelProperty(value = "Default rate per unit (optional). Only applicable if RateType is RatePerUnit")
+  @ApiModelProperty(required = false, value = "Default rate per unit (optional). Only applicable if RateType is RatePerUnit")
   public Double getRatePerUnit() {
 	 return ratePerUnit;
   }
@@ -188,7 +188,7 @@ public class EarningsRate {
    * This is the multiplier used to calculate the rate per unit, based on the employee’s ordinary earnings rate. For example, for time and a half enter 1.5. Only applicable if RateType is MultipleOfOrdinaryEarningsRate
    * @return multipleOfOrdinaryEarningsRate
   **/
-  @ApiModelProperty(value = "This is the multiplier used to calculate the rate per unit, based on the employee’s ordinary earnings rate. For example, for time and a half enter 1.5. Only applicable if RateType is MultipleOfOrdinaryEarningsRate")
+  @ApiModelProperty(required = false, value = "This is the multiplier used to calculate the rate per unit, based on the employee’s ordinary earnings rate. For example, for time and a half enter 1.5. Only applicable if RateType is MultipleOfOrdinaryEarningsRate")
   public Double getMultipleOfOrdinaryEarningsRate() {
     return multipleOfOrdinaryEarningsRate;
   }
@@ -204,7 +204,7 @@ public class EarningsRate {
    * Optional Fixed Rate Amount. Applicable for FixedAmount Rate 
    * @return fixedAmount
   **/
-  @ApiModelProperty(value = "Optional Fixed Rate Amount. Applicable for FixedAmount Rate")
+  @ApiModelProperty(required = false, value = "Optional Fixed Rate Amount. Applicable for FixedAmount Rate")
   public Double getFixedAmount() {
     return fixedAmount;
   }

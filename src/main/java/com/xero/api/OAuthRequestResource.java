@@ -363,6 +363,7 @@ public class OAuthRequestResource {
 		          	XeroApiException e = new XeroApiException(code,content);
 		        		throw e;
 		        }
+		        System.out.println(content);
 		        
 		        Map<String, String> responseMap = new HashMap<>();
 		        addToMapIfNotNull(responseMap, "content", content);

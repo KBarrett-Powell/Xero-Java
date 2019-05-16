@@ -16,7 +16,7 @@ import java.util.List;
 
 public class PayRunCalendars {
   
-  @JsonProperty("PayRunCalendars")
+  @JsonProperty("payRunCalendars")
   private List<PayRunCalendar> payRunCalendars = null;
 
   public PayRunCalendars payRunCalendars(List<PayRunCalendar> payRunCalendars) {

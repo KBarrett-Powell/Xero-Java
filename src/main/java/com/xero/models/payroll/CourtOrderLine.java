@@ -18,13 +18,13 @@ import java.util.UUID;
 
 public class CourtOrderLine {
 	
-  @JsonProperty("CourtOrderTypeID")
+  @JsonProperty("courtOrderTypeID")
   private UUID courtOrderTypeID;
   
-  @JsonProperty("Amount")
+  @JsonProperty("amount")
   private Double amount;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   

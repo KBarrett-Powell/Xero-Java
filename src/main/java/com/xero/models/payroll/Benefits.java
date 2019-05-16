@@ -16,7 +16,7 @@ import java.util.List;
 
 public class Benefits {
   
-  @JsonProperty("Benefits")
+  @JsonProperty("benefits")
   private List<Benefit> benefits = null;
 
   public Benefits benefits(List<Benefit> benefits) {

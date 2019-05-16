@@ -21,31 +21,31 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class Leave {
 	
-  @JsonProperty("LeaveID")
+  @JsonProperty("leaveID")
   private UUID leaveID;
   
-  @JsonProperty("LeaveTypeID")
+  @JsonProperty("leaveTypeID")
   private UUID leaveTypeID;
   
-  @JsonProperty("Description")
+  @JsonProperty("description")
   private String description;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("StartDate")
+  @JsonProperty("startDate")
   private OffsetDateTime startDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("EndDate")
+  @JsonProperty("endDate")
   private OffsetDateTime endDate;
   
-  @JsonProperty("Periods")
+  @JsonProperty("periods")
   private List<LeavePeriod> periods;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("UpdatedDateUTC")
+  @JsonProperty("updatedDateUTC")
   private OffsetDateTime updatedDateUTC;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -89,7 +89,7 @@ public class Leave {
    * The description of the leave
    * @return description
   **/
-  @ApiModelProperty(value = "The description of the leave")
+  @ApiModelProperty(required = false, value = "The description of the leave")
   public String getDescription() {
     return description;
   }

@@ -18,22 +18,22 @@ import java.util.UUID;
 
 public class BenefitLine {
 	
-  @JsonProperty("BenefitTypeID")
+  @JsonProperty("benefitTypeID")
   private UUID benefitTypeID;
   
-  @JsonProperty("DisplayName")
+  @JsonProperty("displayName")
   private String displayName;
   
-  @JsonProperty("Amount")
+  @JsonProperty("amount")
   private Double amount;
   
-  @JsonProperty("FixedAmount")
+  @JsonProperty("fixedAmount")
   private Double fixedAmount;
   
-  @JsonProperty("Percentage")
+  @JsonProperty("percentage")
   private Double percentage;
   
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -93,7 +93,7 @@ public class BenefitLine {
     * Benefit fixed amount
 	* @return fixedAmount
   **/
-  @ApiModelProperty(value = "Benefit fixed amount")
+  @ApiModelProperty(required = false, value = "Benefit fixed amount")
   public Double getFixedAmount() {
 	 return fixedAmount;
   }
@@ -109,7 +109,7 @@ public class BenefitLine {
     * Benefit rate percentage
 	* @return percentage
   **/
-  @ApiModelProperty(value = "Benefit rate percentage")
+  @ApiModelProperty(required = false, value = "Benefit rate percentage")
   public Double getPercentage() {
 	 return percentage;
   }

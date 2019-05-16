@@ -21,45 +21,45 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class Employee {
 	
-  @JsonProperty("EmployeeID")
+  @JsonProperty("employeeID")
   private UUID employeeID;
   
-  @JsonProperty("FirstName")
+  @JsonProperty("firstName")
   private String firstName;
   
-  @JsonProperty("LastName")
+  @JsonProperty("lastName")
   private String lastName;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("DateOfBirth")
+  @JsonProperty("dateOfBirth")
   private OffsetDateTime dateOfBirth;
   
-  @JsonProperty("Email")
+  @JsonProperty("email")
   private String email;
   
-  @JsonProperty("PhoneNumber")
+  @JsonProperty("phoneNumber")
   private String phoneNumber;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("StartDate")
+  @JsonProperty("startDate")
   private OffsetDateTime startDate;
   
-  @JsonProperty("PayrollCalendarID")
+  @JsonProperty("payrollCalendarID")
   private UUID payrollCalendarID;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("UpdatedDateUTC")
+  @JsonProperty("updatedDateUTC")
   private OffsetDateTime updatedDateUTC;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("CreatedDateUTC")
+  @JsonProperty("createdDateUTC")
   private OffsetDateTime createdDateUTC;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("EndDate")
+  @JsonProperty("endDate")
   private OffsetDateTime endDate;
 	
-  @JsonProperty("ValidationErrors")
+  @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -135,7 +135,7 @@ public class Employee {
    * Email of the employee
    * @return email
   **/
-  @ApiModelProperty(value = "Email of the employee")
+  @ApiModelProperty(required = false, value = "Email of the employee")
   public String getEmail() {
     return email;
   }
@@ -151,7 +151,7 @@ public class Employee {
    * Phone number of the employee
    * @return phoneNumber
   **/
-  @ApiModelProperty(value = "Phone number of the employee")
+  @ApiModelProperty(required = false, value = "Phone number of the employee")
   public String getPhoneNumber() {
     return phoneNumber;
   }
@@ -231,7 +231,7 @@ public class Employee {
    * Employment end date of the employee at the time it was requested
    * @return endDate
   **/
-  @ApiModelProperty(value = "Employment end date of the employee at the time it was requested")
+  @ApiModelProperty(required = false, value = "Employment end date of the employee at the time it was requested")
   public OffsetDateTime getEndDate() {
     return endDate;
   }
