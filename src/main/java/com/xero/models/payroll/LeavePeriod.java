@@ -14,7 +14,8 @@ import com.xero.models.accounting.ValidationError;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
-import org.threeten.bp.OffsetDateTime;
+
+import org.threeten.bp.LocalDate;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -26,11 +27,11 @@ public class LeavePeriod {
 	
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("periodStartDate")
-  private OffsetDateTime periodStartDate;
+  private LocalDate periodStartDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("periodEndDate")
-  private OffsetDateTime periodEndDate;
+  private LocalDate periodEndDate;
   
   @JsonProperty("numberOfUnits")
   private Double numberOfUnits;
@@ -77,7 +78,7 @@ public class LeavePeriod {
   private List<ValidationError> validationErrors = null;
   
   
-  public LeavePeriod periodStartDate(OffsetDateTime periodStartDate) {
+  public LeavePeriod periodStartDate(LocalDate periodStartDate) {
     this.periodStartDate = periodStartDate;
     return this;
   }
@@ -86,14 +87,14 @@ public class LeavePeriod {
    * @return periodStatustartDate
   **/
   @ApiModelProperty(value = "The Pay Period Start Date (YYYY-MM-DD)")
-  public OffsetDateTime getPeriodStartDate() {
+  public LocalDate getPeriodStartDate() {
     return periodStartDate;
   }
-  public void setPeriodStartDate(OffsetDateTime periodStartDate) {
+  public void setPeriodStartDate(LocalDate periodStartDate) {
     this.periodStartDate = periodStartDate;
   }
   
-  public LeavePeriod periodEndDate(OffsetDateTime periodEndDate) {
+  public LeavePeriod periodEndDate(LocalDate periodEndDate) {
     this.periodEndDate = periodEndDate;
     return this;
   }
@@ -102,10 +103,10 @@ public class LeavePeriod {
    * @return periodEndDate
   **/
   @ApiModelProperty(value = "The Pay Period End Date (YYYY-MM-DD)")
-  public OffsetDateTime getPeriodEndDate() {
+  public LocalDate getPeriodEndDate() {
     return periodEndDate;
   }
-  public void setPeriodEndDate(OffsetDateTime periodEndDate) {
+  public void setPeriodEndDate(LocalDate periodEndDate) {
     this.periodEndDate = periodEndDate;
   }
   

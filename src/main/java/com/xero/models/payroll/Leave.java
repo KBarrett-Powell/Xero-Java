@@ -11,7 +11,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import org.threeten.bp.OffsetDateTime;
+
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -32,18 +34,18 @@ public class Leave {
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("startDate")
-  private OffsetDateTime startDate;
+  private LocalDate startDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("endDate")
-  private OffsetDateTime endDate;
+  private LocalDate endDate;
   
   @JsonProperty("periods")
   private List<LeavePeriod> periods;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("updatedDateUTC")
-  private OffsetDateTime updatedDateUTC;
+  private LocalDateTime updatedDateUTC;
   
   @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
@@ -97,7 +99,7 @@ public class Leave {
     this.description = description;
   }
   
-  public Leave startDate(OffsetDateTime startDate) {
+  public Leave startDate(LocalDate startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -106,14 +108,14 @@ public class Leave {
    * @return startDate
   **/
   @ApiModelProperty(value = "Start date of the leave (YYYY-MM-DD)")
-  public OffsetDateTime getStartDate() {
+  public LocalDate getStartDate() {
     return startDate;
   }
-  public void setStartDate(OffsetDateTime startDate) {
+  public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
   }
   
-  public Leave endDate(OffsetDateTime endDate) {
+  public Leave endDate(LocalDate endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -122,10 +124,10 @@ public class Leave {
    * @return endDate
   **/
   @ApiModelProperty(value = "End date of the leave (YYYY-MM-DD)")
-  public OffsetDateTime getEndDate() {
+  public LocalDate getEndDate() {
     return endDate;
   }
-  public void setEndDate(OffsetDateTime endDate) {
+  public void setEndDate(LocalDate endDate) {
     this.endDate = endDate;
   }
   
@@ -145,7 +147,7 @@ public class Leave {
     this.periods = periods;
   }
   
-  public Leave updatedDateUTC(OffsetDateTime updatedDateUTC) {
+  public Leave updatedDateUTC(LocalDateTime updatedDateUTC) {
     this.updatedDateUTC = updatedDateUTC;
     return this;
   }
@@ -154,10 +156,10 @@ public class Leave {
    * @return updatedDateUTC
   **/
   @ApiModelProperty(value = "The date the leave was last updated (YYYY-MM-DD)")
-  public OffsetDateTime getUpdatedDateUTC() {
+  public LocalDateTime getUpdatedDateUTC() {
     return updatedDateUTC;
   }
-  public void setUpdatedDateUTC(OffsetDateTime updatedDateUTC) {
+  public void setUpdatedDateUTC(LocalDateTime updatedDateUTC) {
     this.updatedDateUTC = updatedDateUTC;
   }
   

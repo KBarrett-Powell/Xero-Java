@@ -5,6 +5,7 @@ import com.xero.api.exception.XeroExceptionHandler;
 import com.xero.api.jaxb.XeroJAXBMarshaller;
 import com.xero.model.*;
 import com.xero.models.assets.*;
+import com.xero.models.payroll.PayRuns;
 
 import javax.xml.bind.JAXBElement;
 
@@ -1967,4 +1968,19 @@ public class XeroClient {
 			 throw xeroExceptionHandler.convertException(ioe);
 		}
 	}
+    
+    //Payroll
+    public PayRuns getPayRuns(Date ifModifiedSince, String where, String order, Integer page) throws IOException {
+        Map<String, String> params = new HashMap<>();
+        addToMapIfNotNull(params, "Where", where);
+        addToMapIfNotNull(params, "order", order);
+        addToMapIfNotNull(params, "Page", page);
+        
+        String response = get2("https://api.xero.com/payroll.xro/2.0/payRuns", ifModifiedSince, params);
+        
+        TypeReference<PayRuns> typeRef = new TypeReference<PayRuns>() {};
+        ApiClient apiClient = new ApiClient();
+		
+        return apiClient.getObjectMapper().readValue(response, typeRef);
+    }
 }

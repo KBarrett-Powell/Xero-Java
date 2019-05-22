@@ -19,43 +19,43 @@ import java.util.UUID;
 public class Benefit {
 	
   @JsonProperty("id")
-  private UUID id;
+  private UUID id = null;
   
   @JsonProperty("name")
-  private String name;
+  private String name = null;
   
   @JsonProperty("category")
-  private String category;
+  private String category = null;
   
   @JsonProperty("liabilityAccountId")
-  private UUID liabilityAccountId;
+  private UUID liabilityAccountId = null;
   
   @JsonProperty("expenseAccountId")
-  private UUID expenseAccountId;
+  private UUID expenseAccountId = null;
   
   @JsonProperty("standardAmount")
-  private Double standardAmount;
+  private Double standardAmount = null;
   
   @JsonProperty("percentage")
-  private Double percentage;
+  private Double percentage = null;
   
   @JsonProperty("calculationType")
-  private String calculationType;
+  private String calculationType = null;
   
   @JsonProperty("currentRecord")
-  private Boolean currentRecord;
+  private Boolean currentRecord = null;
   
   @JsonProperty("subjectToNIC")
-  private Boolean subjectToNIC;
+  private Boolean subjectToNIC = null;
   
   @JsonProperty("subjectToPension")
-  private Boolean subjectToPension;
+  private Boolean subjectToPension = null;
   
   @JsonProperty("subjectToTax")
-  private Boolean subjectToTax;
+  private Boolean subjectToTax = null;
   
   @JsonProperty("isCalculatingOnQualifyingEarnings")
-  private Boolean isCalculatingOnQualifyingEarnings;
+  private Boolean isCalculatingOnQualifyingEarnings = null;
 	
   @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
@@ -149,7 +149,7 @@ public class Benefit {
    * Standard amount of the employer pension
    * @return standardAmount
   **/
-  @ApiModelProperty(required = false, value = "Standard amount of the employer pension")
+  @ApiModelProperty(value = "Standard amount of the employer pension")
   public Double getStandardAmount() {
     return standardAmount;
   }
@@ -165,7 +165,7 @@ public class Benefit {
    * Percentage of gross of the employer pension
    * @return percentage
   **/
-  @ApiModelProperty(required = false, value = "Percentage of gross of the employer pension")
+  @ApiModelProperty(value = "Percentage of gross of the employer pension")
   public Double getPercentage() {
     return percentage;
   }
@@ -181,7 +181,7 @@ public class Benefit {
     * Calculation Type of the employer pension (FixedAmount or PercentageOfGross)
 	* @return calculationType
   **/
-  @ApiModelProperty(required = false, value = "Calculation Type of the employer pension (FixedAmount or PercentageOfGross)")
+  @ApiModelProperty(value = "Calculation Type of the employer pension (FixedAmount or PercentageOfGross)")
   public String getCalculationType() {
 	 return calculationType;
   }
@@ -213,7 +213,7 @@ public class Benefit {
    * Identifier of subject To NIC
    * @return subjectToNIC
   **/
-  @ApiModelProperty(required = false, value = "Identifier of subject To NIC")
+  @ApiModelProperty(value = "Identifier of subject To NIC")
   public Boolean getSubjectToNIC() {
     return subjectToNIC;
   }
@@ -229,7 +229,7 @@ public class Benefit {
    * Identifier of subject To pension
    * @return subjectToPension
   **/
-  @ApiModelProperty(required = false, value = "Identifier of subject To pension")
+  @ApiModelProperty(value = "Identifier of subject To pension")
   public Boolean getSubjectToPension() {
     return subjectToPension;
   }
@@ -245,7 +245,7 @@ public class Benefit {
    * Identifier of subject To Tax
    * @return subjectToTax
   **/
-  @ApiModelProperty(required = false, value = "Identifier of subject To Tax")
+  @ApiModelProperty(value = "Identifier of subject To Tax")
   public Boolean getSubjectToTax() {
     return subjectToTax;
   }
@@ -261,7 +261,7 @@ public class Benefit {
    * Identifier of calculating on qualifying earnings
    * @return isCalculatingOnQualifyingEarnings
   **/
-  @ApiModelProperty(required = false, value = "Identifier of calculating on qualifying earnings")
+  @ApiModelProperty(value = "Identifier of calculating on qualifying earnings")
   public Boolean getIsCalculatingOnQualifyingEarnings() {
     return isCalculatingOnQualifyingEarnings;
   }

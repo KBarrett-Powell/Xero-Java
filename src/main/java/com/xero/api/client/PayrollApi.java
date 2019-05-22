@@ -1,9 +1,12 @@
 package com.xero.api.client;
 
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 import org.threeten.bp.OffsetDateTime;
 import java.util.UUID;
 
-import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.xero.api.exception.XeroExceptionHandler;
 import com.xero.model.*;
 import com.xero.models.payroll.*;
@@ -19,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.ws.rs.core.UriBuilder;
@@ -32,6 +36,12 @@ public class PayrollApi {
     private String tokenSecret = null;
     final static Logger logger = LogManager.getLogger(XeroClient.class);
     protected static final DateFormat utcFormatter;
+    private static Gson gson = new GsonBuilder()
+			.setPrettyPrinting()
+			.serializeNulls()
+			.registerTypeAdapter(LocalDateTime.class, new CustomLocalDateTimeDeserializer())
+			.registerTypeAdapter(LocalDate.class, new CustomLocalDateDeserializer())
+			.create();
 
     static {
         utcFormatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
@@ -71,7 +81,6 @@ public class PayrollApi {
         this.token = token;
         this.tokenSecret = tokenSecret;
     }
-
     
     protected String DATA(String url, String body, Map<String, String> params, String method) throws IOException {
         return this.DATA(url,body,params,method,null, "application/json");
@@ -218,8 +227,12 @@ public class PayrollApi {
 
     		String response = this.DATA(url, strBody, params, "GET");
 
-    		TypeReference<Benefits> typeRef = new TypeReference<Benefits>() {};
-    		return apiClient.getObjectMapper().readValue(response, typeRef);           
+    		PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
+    		
+    		Benefits be = new Benefits();
+    		be.setBenefits(pr.getBenefits());
+    		
+    		return be;             
 
     	} catch (IOException e) {
     		throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -248,12 +261,13 @@ public class PayrollApi {
     		}
 
     		String response = this.DATA(url, strBody, params, "GET");
-            String respcorrect = "{" + response.substring(response.indexOf("\"deductions\":"));
-            
-            System.out.println("**CORRECTED**" + respcorrect);
 
-    		TypeReference<Deductions> typeRef = new TypeReference<Deductions>() {};
-    		return apiClient.getObjectMapper().readValue(respcorrect, typeRef);           
+            PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
+    		
+            Deductions de = new Deductions();
+    		de.setDeductions(pr.getDeductions());
+    		
+    		return de;          
 
     	} catch (IOException e) {
     		throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -283,8 +297,12 @@ public class PayrollApi {
 
     		String response = this.DATA(url, strBody, params, "GET");
 
-    		TypeReference<EarningsRates> typeRef = new TypeReference<EarningsRates>() {};
-    		return apiClient.getObjectMapper().readValue(response, typeRef);           
+    		PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
+    		
+    		EarningsRates er = new EarningsRates();
+    		er.setEarningsRates(pr.getEarningsRates());
+    		
+    		return er;          
 
     	} catch (IOException e) {
     		throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -314,8 +332,12 @@ public class PayrollApi {
 
     		String response = this.DATA(url, strBody, params, "GET");
 
-    		TypeReference<Employees> typeRef = new TypeReference<Employees>() {};
-    		return apiClient.getObjectMapper().readValue(response, typeRef);           
+    		PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
+    		
+    		Employees emp = new Employees();
+    		emp.setEmployees(pr.getEmployees());
+    		
+    		return emp;           
 
     	} catch (IOException e) {
     		throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -351,8 +373,12 @@ public class PayrollApi {
 
     		String response = this.DATA(url, strBody, params, "GET");
 
-    		TypeReference<LeaveBalances> typeRef = new TypeReference<LeaveBalances>() {};
-    		return apiClient.getObjectMapper().readValue(response, typeRef);           
+    		PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
+    		
+    		LeaveBalances lb = new LeaveBalances();
+    		lb.setLeaveBalances(pr.getLeaveBalances());
+    		
+    		return lb;          
 
     	} catch (IOException e) {
     		throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -382,8 +408,12 @@ public class PayrollApi {
 
     		String response = this.DATA(url, strBody, params, "GET");
 
-    		TypeReference<LeaveTypes> typeRef = new TypeReference<LeaveTypes>() {};
-    		return apiClient.getObjectMapper().readValue(response, typeRef);           
+    		PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
+    		
+    		LeaveTypes lt = new LeaveTypes();
+    		lt.setLeaveTypes(pr.getLeaveTypes());
+    		
+    		return lt;          
 
     	} catch (IOException e) {
     		throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -420,12 +450,10 @@ public class PayrollApi {
 
              
              String response = this.DATA(url, strBody, params, "GET");
-             String respcorrect = response.substring(response.indexOf("\"payRun\":")+9, response.length() - 1);
              
-             System.out.println("**CORRECTED**" + respcorrect);
+             PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
 
-             TypeReference<PayRun> typeRef = new TypeReference<PayRun>() {};
-             return apiClient.getObjectMapper().readValue(respcorrect, typeRef);           
+     		 return pr.getPayRun();          
 
          } catch (IOException e) {
              throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -451,6 +479,7 @@ public class PayrollApi {
     		String correctPath = "/payRuns";
     		UriBuilder uriBuilder = UriBuilder.fromUri(apiClient.getBasePath() + correctPath);
             String url = uriBuilder.build().toString();
+            
             params = new HashMap<>();
             if (where != null) {
                 addToMapIfNotNull(params, "where", where);
@@ -461,12 +490,13 @@ public class PayrollApi {
             }
 
     		String response = this.DATA(url, strBody, params, "GET", ifModifiedSince);
-            String respcorrect = "{" + response.substring(response.indexOf("\"payRuns\":"));
-            
-            System.out.println("**CORRECTED**" + respcorrect);
-
-    		TypeReference<PayRuns> typeRef = new TypeReference<PayRuns>() {};
-    		return apiClient.getObjectMapper().readValue(respcorrect, typeRef);           
+    		
+    		PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
+    		
+    		PayRuns prs = new PayRuns();
+    		prs.setPayRuns(pr.getPayRuns());
+    		
+    		return prs;           
 
     	} catch (IOException e) {
     		throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -495,10 +525,14 @@ public class PayrollApi {
     		}
 
     		String response = this.DATA(url, strBody, params, "GET");
+    		
+    		PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
+    		
+    		PayRunCalendars prcs = new PayRunCalendars();
+    		prcs.setPayRunCalendars(pr.getPayRunCalendars());
 
-    		TypeReference<PayRunCalendars> typeRef = new TypeReference<PayRunCalendars>() {};
-    		return apiClient.getObjectMapper().readValue(response, typeRef);           
-
+    		return prcs;
+    		
     	} catch (IOException e) {
     		throw xeroExceptionHandler.handleBadRequest(e.getMessage());
     	} catch (XeroApiException e) {
@@ -533,8 +567,12 @@ public class PayrollApi {
 
              String response = this.DATA(url, strBody, params, "GET");
 
-             TypeReference<PaySlips> typeRef = new TypeReference<PaySlips>() {};
-             return apiClient.getObjectMapper().readValue(response, typeRef);           
+             PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
+     		
+     		 PaySlips ps = new PaySlips();
+     		 ps.setPaySlips(pr.getPaySlips());
+     		
+     		 return ps;                    
 
          } catch (IOException e) {
              throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -575,8 +613,12 @@ public class PayrollApi {
 
               String response = this.DATA(url, strBody, params, "GET");
 
-              TypeReference<SalaryAndWages> typeRef = new TypeReference<SalaryAndWages>() {};
-              return apiClient.getObjectMapper().readValue(response, typeRef);           
+              PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
+       		
+      		  SalaryAndWages sw = new SalaryAndWages();
+      		  sw.setSalaryAndWages(pr.getSalaryAndWages());
+      		
+      		  return sw;          
 
           } catch (IOException e) {
               throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -589,6 +631,18 @@ public class PayrollApi {
         if (value != null) {
             map.put(key, value.toString());
         }
+    }
+    
+    protected String correctJson(String content) {
+    	Pattern pattern = Pattern.compile("\"[a-zA-Z]+\":");
+    	Matcher matcher = pattern.matcher(content);
+
+    	while (matcher.find()) {
+    		System.out.println("start : " + matcher.start() + " end : " + matcher.end() + " group : " + matcher.group());
+    	    content = content.substring(0, matcher.start() + 1) + content.substring(matcher.start() + 1, matcher.start() + 2).toUpperCase() + content.substring(matcher.start() + 2);
+    	}
+    	
+    	return content;
     }
 
 }

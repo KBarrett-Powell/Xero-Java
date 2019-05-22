@@ -41,7 +41,7 @@ public class Deductions {
     return deductions;
   }
 
-  public void setdDeduction(List<Deduction> deductions) {
+  public void setDeductions(List<Deduction> deductions) {
     this.deductions = deductions;
   }
 

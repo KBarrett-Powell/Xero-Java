@@ -11,6 +11,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import org.threeten.bp.LocalDate;
 import org.threeten.bp.OffsetDateTime;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -41,7 +43,7 @@ public class SalaryAndWage {
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("effectiveFrom")
-  private OffsetDateTime effectiveFrom;
+  private LocalDate effectiveFrom;
   
   @JsonProperty("annualSalary")
   private Double annualSalary;
@@ -152,7 +154,7 @@ public class SalaryAndWage {
 	this.numberOfUnitsPerDay = numberOfUnitsPerDay;
   }
   
-  public SalaryAndWage effectiveFrom(OffsetDateTime effectiveFrom) {
+  public SalaryAndWage effectiveFrom(LocalDate effectiveFrom) {
 	this.effectiveFrom = effectiveFrom;
 	return this;
   }
@@ -161,10 +163,10 @@ public class SalaryAndWage {
 	* @return effectiveFrom
   **/
   @ApiModelProperty(value = "The effective date of the corresponding salary and wages")
-  public OffsetDateTime getEffectiveFrom() {
+  public LocalDate getEffectiveFrom() {
 	return effectiveFrom;
   }
-  public void setEffectiveFrom(OffsetDateTime effectiveFrom) {
+  public void setEffectiveFrom(LocalDate effectiveFrom) {
 	this.effectiveFrom = effectiveFrom;
   }
   

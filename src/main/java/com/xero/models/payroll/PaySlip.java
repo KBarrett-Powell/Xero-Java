@@ -21,95 +21,95 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class PaySlip {
 	
-  @JsonProperty("paySlipID")
+  @JsonProperty("PaySlipID")
   private UUID paySlipID;
   
-  @JsonProperty("employeeID")
+  @JsonProperty("EmployeeID")
   private UUID employeeID;
   
-  @JsonProperty("payRunID")
+  @JsonProperty("PayRunID")
   private UUID payRunID;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("lastEdited")
+  @JsonProperty("LastEdited")
   private OffsetDateTime lastEdited;
   
-  @JsonProperty("firstName")
+  @JsonProperty("FirstName")
   private String firstName;
   
-  @JsonProperty("lastName")
+  @JsonProperty("LastName")
   private String lastName;
   
-  @JsonProperty("totalEarnings")
+  @JsonProperty("TotalEarnings")
   private Double totalEarnings;
   
-  @JsonProperty("grossEarnings")
+  @JsonProperty("GrossEarnings")
   private Double grossEarnings;
   
-  @JsonProperty("totalPay")
+  @JsonProperty("TotalPay")
   private Double totalPay;
   
-  @JsonProperty("totalEmployerTaxes")
+  @JsonProperty("TotalEmployerTaxes")
   private Double totalEmployerTaxes;
   
-  @JsonProperty("totalEmployeeTaxes")
+  @JsonProperty("TotalEmployeeTaxes")
   private Double totalEmployeeTaxes;
   
-  @JsonProperty("totalDeductions")
+  @JsonProperty("TotalDeductions")
   private Double totalDeductions;
   
-  @JsonProperty("totalReimbursements")
+  @JsonProperty("TotalReimbursements")
   private Double totalReimbursements;
   
-  @JsonProperty("totalCourtOrders")
+  @JsonProperty("TotalCourtOrders")
   private Double totalCourtOrders;
   
-  @JsonProperty("totalBenefits")
+  @JsonProperty("TotalBenefits")
   private Double totalBenefits;
   
-  @JsonProperty("totalStatutoryDeductions")
+  @JsonProperty("TotalStatutoryDeductions")
   private Double totalStatutoryDeductions;
   
-  @JsonProperty("bacsHash")
+  @JsonProperty("BacsHash")
   private String bacsHash;
   
-  @JsonProperty("paymentMethod")
+  @JsonProperty("PaymentMethod")
   private String paymentMethod;
   
-  @JsonProperty("earningsLines")
+  @JsonProperty("EarningsLines")
   private List<EarningsLine> earningsLines;
   
-  @JsonProperty("leaveEarningsLines")
+  @JsonProperty("LeaveEarningsLines")
   private List<EarningsLine> leaveEarningsLines;
   
-  @JsonProperty("timesheetEarningsLines")
+  @JsonProperty("TimesheetEarningsLines")
   private List<EarningsLine> timesheetEarningsLines;
   
-  @JsonProperty("deductionLines")
+  @JsonProperty("DeductionLines")
   private List<DeductionLine> deductionLines;
   
-  @JsonProperty("reimbursementLines")
+  @JsonProperty("ReimbursementLines")
   private List<ReimbursementLine> reimbursementLines;
   
-  @JsonProperty("leaveAccrualLines")
+  @JsonProperty("LeaveAccrualLines")
   private List<LeaveAccrualLine> leaveAccrualLines;
   
-  @JsonProperty("benefitLines")
+  @JsonProperty("BenefitLines")
   private List<BenefitLine> benefitLines;
   
-  @JsonProperty("paymentLines")
+  @JsonProperty("PaymentLines")
   private List<PaymentLine> paymentLines;
   
-  @JsonProperty("employeeTaxLines")
+  @JsonProperty("EmployeeTaxLines")
   private List<TaxLine> employeeTaxLines;
   
-  @JsonProperty("employerTaxLines")
+  @JsonProperty("EmployerTaxLines")
   private List<TaxLine> employerTaxLines;
   
-  @JsonProperty("courtOrderLines")
+  @JsonProperty("CourtOrderLines")
   private List<CourtOrderLine> courtOrderLines;
 	
-  @JsonProperty("validationErrors")
+  @JsonProperty("ValidationErrors")
   private List<ValidationError> validationErrors = null;
   
   

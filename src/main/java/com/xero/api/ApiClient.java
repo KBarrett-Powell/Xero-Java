@@ -66,7 +66,7 @@ public class ApiClient {
     }
 
     public ObjectMapper getObjectMapper() {
-        return objectMapper;
+    	return objectMapper;
     }
 
     public class JacksonJsonHttpContent extends AbstractHttpContent {

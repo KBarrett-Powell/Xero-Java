@@ -11,7 +11,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import org.threeten.bp.OffsetDateTime;
+
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -32,7 +34,7 @@ public class Employee {
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("dateOfBirth")
-  private OffsetDateTime dateOfBirth;
+  private LocalDate dateOfBirth;
   
   @JsonProperty("email")
   private String email;
@@ -42,22 +44,22 @@ public class Employee {
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("startDate")
-  private OffsetDateTime startDate;
+  private LocalDate startDate;
   
   @JsonProperty("payrollCalendarID")
   private UUID payrollCalendarID;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("updatedDateUTC")
-  private OffsetDateTime updatedDateUTC;
+  private LocalDateTime updatedDateUTC;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("createdDateUTC")
-  private OffsetDateTime createdDateUTC;
+  private LocalDateTime createdDateUTC;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("endDate")
-  private OffsetDateTime endDate;
+  private LocalDate endDate;
 	
   @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
@@ -111,7 +113,7 @@ public class Employee {
     this.lastName = lastName;
   }
   
-  public Employee dateOfBirth(OffsetDateTime dateOfBirth) {
+  public Employee dateOfBirth(LocalDate dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
     return this;
   }
@@ -120,10 +122,10 @@ public class Employee {
    * @return dateOfBirth
   **/
   @ApiModelProperty(value = "Date of birth of the employee")
-  public OffsetDateTime getDateOfBirth() {
+  public LocalDate getDateOfBirth() {
     return dateOfBirth;
   }
-  public void setDateOfBirth(OffsetDateTime dateOfBirth) {
+  public void setDateOfBirth(LocalDate dateOfBirth) {
     this.dateOfBirth = dateOfBirth;
   }
   
@@ -159,7 +161,7 @@ public class Employee {
     this.phoneNumber = phoneNumber;
   }
   
-  public Employee startDate(OffsetDateTime startDate) {
+  public Employee startDate(LocalDate startDate) {
     this.startDate = startDate;
     return this;
   }
@@ -168,10 +170,10 @@ public class Employee {
    * @return startDate
   **/
   @ApiModelProperty(value = "Employment start date of the employee at the time it was requested")
-  public OffsetDateTime getStartDate() {
+  public LocalDate getStartDate() {
     return startDate;
   }
-  public void setStartDate(OffsetDateTime startDate) {
+  public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
   }
   
@@ -191,7 +193,7 @@ public class Employee {
 	 this.payrollCalendarID = payrollCalendarID;
   } 
   
-  public Employee updatedDateUTC(OffsetDateTime updatedDateUTC) {
+  public Employee updatedDateUTC(LocalDateTime updatedDateUTC) {
     this.updatedDateUTC = updatedDateUTC;
     return this;
   }
@@ -200,14 +202,14 @@ public class Employee {
    * @return updatedDateUTC
   **/
   @ApiModelProperty(value = "UTC timestamp of last update to the employee")
-  public OffsetDateTime getUpdatedDateUTC() {
+  public LocalDateTime getUpdatedDateUTC() {
     return updatedDateUTC;
   }
-  public void setUpdatedDateUTC(OffsetDateTime updatedDateUTC) {
+  public void setUpdatedDateUTC(LocalDateTime updatedDateUTC) {
     this.updatedDateUTC = updatedDateUTC;
   }
   
-  public Employee createdDateUTC(OffsetDateTime createdDateUTC) {
+  public Employee createdDateUTC(LocalDateTime createdDateUTC) {
     this.createdDateUTC = createdDateUTC;
     return this;
   }
@@ -216,14 +218,14 @@ public class Employee {
    * @return createdDateUTC
   **/
   @ApiModelProperty(value = "UTC timestamp when the employee was created in Xero")
-  public OffsetDateTime getCreatedDateUTC() {
+  public LocalDateTime getCreatedDateUTC() {
     return createdDateUTC;
   }
-  public void setCreatedDateUTC(OffsetDateTime createdDateUTC) {
+  public void setCreatedDateUTC(LocalDateTime createdDateUTC) {
     this.createdDateUTC = createdDateUTC;
   }
   
-  public Employee endDate(OffsetDateTime endDate) {
+  public Employee endDate(LocalDate endDate) {
     this.endDate = endDate;
     return this;
   }
@@ -232,10 +234,10 @@ public class Employee {
    * @return endDate
   **/
   @ApiModelProperty(required = false, value = "Employment end date of the employee at the time it was requested")
-  public OffsetDateTime getEndDate() {
+  public LocalDate getEndDate() {
     return endDate;
   }
-  public void setEndDate(OffsetDateTime endDate) {
+  public void setEndDate(LocalDate endDate) {
     this.endDate = endDate;
   }
   

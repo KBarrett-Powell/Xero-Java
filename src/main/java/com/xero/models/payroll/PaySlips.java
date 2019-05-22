@@ -16,7 +16,7 @@ import java.util.List;
 
 public class PaySlips {
   
-  @JsonProperty("paySlips")
+  @JsonProperty("PaySlips")
   private List<PaySlip> paySlips = null;
 
   public PaySlips paySlips(List<PaySlip> paySlips) {
@@ -41,7 +41,7 @@ public class PaySlips {
     return paySlips;
   }
 
-  public void setPaySlip(List<PaySlip> paySlips) {
+  public void setPaySlips(List<PaySlip> paySlips) {
     this.paySlips = paySlips;
   }
 

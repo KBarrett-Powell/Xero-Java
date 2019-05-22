@@ -13,7 +13,9 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import org.threeten.bp.OffsetDateTime;
+
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -77,19 +79,19 @@ public class PayRunCalendar {
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("periodStartDate")
-  private OffsetDateTime periodStartDate;
+  private LocalDate periodStartDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("periodEndDate")
-  private OffsetDateTime periodEndDate;
+  private LocalDate periodEndDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("paymentDate")
-  private OffsetDateTime paymentDate;
+  private LocalDate paymentDate;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("updatedDateUTC")
-  private OffsetDateTime updatedDateUTC;
+  private LocalDateTime updatedDateUTC;
 
   @JsonProperty("validationErrors")
   private List<ValidationError> validationErrors = null;
@@ -143,7 +145,7 @@ public class PayRunCalendar {
 	this.calendarType = calendarType;
   }
   
-  public PayRunCalendar periodStartDate(OffsetDateTime periodStartDate) {
+  public PayRunCalendar periodStartDate(LocalDate periodStartDate) {
 	this.periodStartDate = periodStartDate;
 	return this;
   }
@@ -152,14 +154,14 @@ public class PayRunCalendar {
    * @return periodStartDate
   **/
   @ApiModelProperty(value = "Period start date of the calendar")
-  public OffsetDateTime getPeriodStartDate() {
+  public LocalDate getPeriodStartDate() {
     return periodStartDate;
   }
-  public void setPeriodStartDate(OffsetDateTime periodStartDate) {
+  public void setPeriodStartDate(LocalDate periodStartDate) {
 	this.periodStartDate = periodStartDate;
   }
   
-  public PayRunCalendar periodEndDate(OffsetDateTime periodEndDate) {
+  public PayRunCalendar periodEndDate(LocalDate periodEndDate) {
 	this.periodEndDate = periodEndDate;
 	return this;
   }
@@ -168,14 +170,14 @@ public class PayRunCalendar {
    * @return periodEndDate
   **/
   @ApiModelProperty(value = "Period End Date of the calendar")
-  public OffsetDateTime getPeriodEndDate() {
+  public LocalDate getPeriodEndDate() {
     return periodEndDate;
   }
-  public void setPeriodEndDate(OffsetDateTime periodEndDate) {
+  public void setPeriodEndDate(LocalDate periodEndDate) {
 	this.periodEndDate = periodEndDate;
   }
   
-  public PayRunCalendar paymentDate(OffsetDateTime paymentDate) {
+  public PayRunCalendar paymentDate(LocalDate paymentDate) {
 	this.paymentDate = paymentDate;
 	return this;
   }
@@ -184,14 +186,14 @@ public class PayRunCalendar {
    * @return paymentDate
   **/
   @ApiModelProperty(required = false, value = "Payment Date of the calendar")
-  public OffsetDateTime getPaymentDate() {
+  public LocalDate getPaymentDate() {
     return paymentDate;
   }
-  public void setPaymentDate(OffsetDateTime paymentDate) {
+  public void setPaymentDate(LocalDate paymentDate) {
 	this.paymentDate = paymentDate;
   }
   
-  public PayRunCalendar updatedDateUTC(OffsetDateTime updatedDateUTC) {
+  public PayRunCalendar updatedDateUTC(LocalDateTime updatedDateUTC) {
 	this.updatedDateUTC = updatedDateUTC;
 	return this;
   }
@@ -200,10 +202,10 @@ public class PayRunCalendar {
    * @return updatedDateUTC
   **/
   @ApiModelProperty(required = false, value = "UTC timestamp of the last update to the pay run calendar")
-  public OffsetDateTime getUpdatedDateUTC() {
+  public LocalDateTime getUpdatedDateUTC() {
     return updatedDateUTC;
   }
-  public void setUpdatedDateUTC(OffsetDateTime updatedDateUTC) {
+  public void setUpdatedDateUTC(LocalDateTime updatedDateUTC) {
 	this.updatedDateUTC = updatedDateUTC;
   }
   

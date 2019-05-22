@@ -10,10 +10,13 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.xero.models.accounting.ValidationError;
 import io.swagger.annotations.ApiModelProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import org.threeten.bp.OffsetDateTime;
+
+import org.threeten.bp.LocalDate;
+import org.threeten.bp.LocalDateTime;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -23,29 +26,29 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class PayRun {
 	
-  @JsonProperty("payRunID")
-  private UUID payRunID;
+  @JsonProperty("PayRunID")
+  private UUID payRunID = null;
   
-  @JsonProperty("payrollCalendarID")
-  private UUID payrollCalendarID;
-  
-  @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("periodStartDate")
-  private OffsetDateTime periodStartDate;
+  @JsonProperty("PayrollCalendarID")
+  private UUID payrollCalendarID = null;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("periodEndDate")
-  private OffsetDateTime periodEndDate;
+  @JsonProperty("PeriodStartDate")
+  private LocalDate periodStartDate = null;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("paymentDate")
-  private OffsetDateTime paymentDate;
+  @JsonProperty("PeriodEndDate")
+  private LocalDate periodEndDate = null;
   
-  @JsonProperty("totalCost")
-  private Double totalCost;
+  @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
+  @JsonProperty("PaymentDate")
+  private LocalDate paymentDate = null;
   
-  @JsonProperty("totalPay")
-  private Double totalPay;
+  @JsonProperty("TotalCost")
+  private Double totalCost = null;
+  
+  @JsonProperty("TotalPay")
+  private Double totalPay = null;
 	
   /**
    * See PayRun Status
@@ -82,8 +85,8 @@ public class PayRun {
     }
   }
 
-  @JsonProperty("payRunStatus")
-  private StatusEnum payRunStatus;
+  @JsonProperty("PayRunStatus")
+  private StatusEnum payRunStatus = null;
   
   /**
    * See PayRun Type
@@ -122,7 +125,7 @@ public class PayRun {
     }
   }
 
-  @JsonProperty("payRunType")
+  @JsonProperty("PayRunType")
   private TypeEnum payRunType;
   
   /**
@@ -168,23 +171,23 @@ public class PayRun {
     }
   }
 
-  @JsonProperty("calendarType")
-  private CalTypeEnum calendarType;
+  @JsonProperty("CalendarType")
+  private CalTypeEnum calendarType = null;
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
-  @JsonProperty("postedDateTime")
-  private OffsetDateTime postedDateTime;
+  @JsonProperty("PostedDateTime")
+  private LocalDateTime postedDateTime = null;
   
-  @JsonProperty("paySlips")
-  private List<PaySlip> paySlips;
+  @JsonProperty("PaySlips")
+  private List<PaySlip> paySlips = null;
   
-  @JsonProperty("payslipMessage")
-  private String payslipMessage;
+  @JsonProperty("PayslipMessage")
+  private String payslipMessage = null;
   
-  @JsonProperty("invalidPayeeIDs")
-  private String invalidPayeeIDs;
+  @JsonProperty("InvalidPayeeIDs")
+  private String invalidPayeeIDs = null;
 
-  @JsonProperty("validationErrors")
+  @JsonProperty("ValidationErrors")
   private List<ValidationError> validationErrors = null;
   
   
@@ -196,7 +199,7 @@ public class PayRun {
 	* Xero generated unique identifier for payRun
 	* @return payRunID
   **/
-  @ApiModelProperty(value = "Xero generated unique identifier for payRun")
+  @ApiModelProperty(required = true, value = "Xero generated unique identifier for payRun")
   public UUID getPayRunID() {
 	 return payRunID;
   }
@@ -212,7 +215,7 @@ public class PayRun {
     * Xero generated unique identifier for payrollCalendar
 	* @return payrollCalendarID
   **/
-  @ApiModelProperty(value = "Xero generated unique identifier for payrollCalendar")
+  @ApiModelProperty(required = true, value = "Xero generated unique identifier for payrollCalendar")
   public UUID getPayrollCalendarID() {
 	 return payrollCalendarID;
   }
@@ -220,33 +223,58 @@ public class PayRun {
 	 this.payrollCalendarID = payrollCalendarID;
   } 
   
+  public PayRun periodStartDate(LocalDate periodStartDate) {
+	 this.periodStartDate = periodStartDate;
+	 return this;
+  }
   /**
    * Period Start Date
    * @return periodStartDate
   **/
   @ApiModelProperty(value = "Period Start Date")
-  public OffsetDateTime getPeriodStartDate() {
+  public LocalDate getPeriodStartDate() {
     return periodStartDate;
   }
+  public void setPeriodStartDate(LocalDate periodStartDate) {
+	 this.periodStartDate = periodStartDate;
+  } 
   
+  public PayRun periodEndDate(LocalDate periodEndDate) {
+	 this.periodEndDate = periodEndDate;
+	 return this;
+  }
   /**
    * Period End Date
    * @return periodEndDate
   **/
   @ApiModelProperty(value = "Period End Date")
-  public OffsetDateTime getPeriodEndDate() {
+  public LocalDate getPeriodEndDate() {
     return periodEndDate;
   }
-  
+  public void setPeriodEndDate(LocalDate periodEndDate) {
+	 this.periodEndDate = periodEndDate;
+  } 
+	  
+  public PayRun paymentDate(LocalDate paymentDate) {
+	 this.paymentDate = paymentDate;
+	 return this;
+  }
   /**
    * Payment Date
    * @return paymentDate
   **/
-  @ApiModelProperty(required = false, value = "Payment Date")
-  public OffsetDateTime getPaymentDate() {
+  @ApiModelProperty(value = "Payment Date")
+  public LocalDate getPaymentDate() {
     return paymentDate;
   }
+  public void setPaymentDate(LocalDate paymentDate) {
+	 this.paymentDate = paymentDate;
+  } 
   
+  public PayRun totalCost(Double totalCost) {
+	 this.totalCost = totalCost;
+	 return this;
+  }
   /**
    * Total cost of pay run
    * @return totalCost
@@ -255,7 +283,14 @@ public class PayRun {
   public Double getTotalCost() {
     return totalCost;
   }
+  public void setTotalCost(Double totalCost) {
+	 this.totalCost = totalCost;
+  } 
   
+  public PayRun totalPay(Double totalPay) {
+	 this.totalPay = totalPay;
+	 return this;
+  }
   /**
    * Total pay
    * @return totalPay
@@ -264,6 +299,9 @@ public class PayRun {
   public Double getTotalPay() {
      return totalPay;
   }
+  public void setTotalPay(Double totalPay) {
+	 this.totalPay = totalPay;
+  } 
   
   public PayRun payRunStatus(StatusEnum payRunStatus) {
 	 this.payRunStatus = payRunStatus;
@@ -313,13 +351,20 @@ public class PayRun {
 	this.calendarType = calendarType;
   }
   
+  public PayRun postedDateTime(LocalDateTime postedDateTime) {
+	 this.postedDateTime = postedDateTime;
+	 return this;
+  }
   /**
    * Posted Date Time
    * @return postedDateTime
   **/
   @ApiModelProperty(required = false, value = "Posted Date Time")
-  public OffsetDateTime getPostedDateTime() {
+  public LocalDateTime getPostedDateTime() {
     return postedDateTime;
+  }
+  public void setPostedDateTime(LocalDateTime postedDateTime) {
+	this.postedDateTime = postedDateTime;
   }
   
   public PayRun payslipMessage(String payslipMessage) {

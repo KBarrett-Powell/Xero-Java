@@ -48,8 +48,10 @@ import com.xero.models.accounting.TrackingOption;
 import com.xero.models.accounting.TrackingOptions;
 import java.util.UUID;
 import com.xero.models.accounting.Users;
-
+import com.fasterxml.jackson.core.JsonFactory;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.xero.api.exception.XeroExceptionHandler;
 import com.xero.model.*;
 import com.xero.api.*;
@@ -2253,9 +2255,7 @@ public class AccountingApi {
             String url = uriBuilder.buildFromMap(uriVariables).toString();
 
             
-            String response = this.DATA(url, strBody, params, "DELETE");
-
-                       
+            String response = this.DATA(url, strBody, params, "DELETE");                
 
         } catch (IOException e) {
             throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -2416,8 +2416,6 @@ public class AccountingApi {
             strBody = apiClient.getObjectMapper().writeValueAsString(requestEmpty);
 
             String response = this.DATA(url, strBody, params, "POST");
-
-                       
 
         } catch (IOException e) {
             throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -4918,6 +4916,12 @@ public class AccountingApi {
 
             
             String response = this.DATA(url, strBody, params, "GET");
+            
+            JsonFactory jf = new JsonFactory();
+    		JsonParser jp = jf.createParser(response);
+    		jp.setCodec(new ObjectMapper());
+    		
+    		System.out.println("jsonfactory content : " + jp.readValueAsTree().toString());
 
             TypeReference<Organisations> typeRef = new TypeReference<Organisations>() {};
             return apiClient.getObjectMapper().readValue(response, typeRef);           

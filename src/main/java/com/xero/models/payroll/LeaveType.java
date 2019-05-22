@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import org.threeten.bp.OffsetDateTime;
+import org.threeten.bp.LocalDateTime;
 
 /**
  * LeaveType
@@ -93,7 +93,7 @@ public class LeaveType {
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("updatedDateUTC")
-  private OffsetDateTime updatedDateUTC;
+  private LocalDateTime updatedDateUTC;
   
   @JsonProperty("isStatutoryLeave")
   private Boolean isStatutoryLeave;
@@ -246,7 +246,7 @@ public class LeaveType {
     this.showOnPayslip = showOnPayslip;
   }
   
-  public LeaveType updatedDateUTC(OffsetDateTime updatedDateUTC) {
+  public LeaveType updatedDateUTC(LocalDateTime updatedDateUTC) {
     this.updatedDateUTC = updatedDateUTC;
     return this;
   }
@@ -255,10 +255,10 @@ public class LeaveType {
    * @return updatedDateUTC
   **/
   @ApiModelProperty(value = "UTC timestamp of last update to the leave type note")
-  public OffsetDateTime getUpdatedDateUTC() {
+  public LocalDateTime getUpdatedDateUTC() {
     return updatedDateUTC;
   }
-  public void setUpdatedDateUTC(OffsetDateTime updatedDateUTC) {
+  public void setUpdatedDateUTC(LocalDateTime updatedDateUTC) {
     this.updatedDateUTC = updatedDateUTC;
   }
   
