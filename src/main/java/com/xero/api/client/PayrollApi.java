@@ -547,7 +547,7 @@ public class PayrollApi {
      * @return PaySlips
      * @throws IOException if an error occurs while attempting to invoke the API
      **/
-     public PaySlips getPaySlip(UUID paySlipID) throws IOException {
+     public PaySlip getPaySlip(UUID paySlipID) throws IOException {
          try {
              String strBody = null;
              Map<String, String> params = null;
@@ -567,12 +567,9 @@ public class PayrollApi {
 
              String response = this.DATA(url, strBody, params, "GET");
 
-             PayrollResponse pr = gson.fromJson(response, PayrollResponse.class);
+             PayrollResponse pr = gson.fromJson(response, PayrollResponse.class); 
      		
-     		 PaySlips ps = new PaySlips();
-     		 ps.setPaySlips(pr.getPaySlips());
-     		
-     		 return ps;                    
+     		 return pr.getPaySlip();                    
 
          } catch (IOException e) {
              throw xeroExceptionHandler.handleBadRequest(e.getMessage());
@@ -581,6 +578,49 @@ public class PayrollApi {
          }
      }
      
+     
+     /**
+      * Allows you to retrieve detailed information for payslips in the payrun
+      * <p><b>200</b> - Success - return response of type PaySlips array
+      * @param payRunID Unique identifier for a PayRun
+      * @return PaySlips
+      * @throws IOException if an error occurs while attempting to invoke the API
+      **/
+      public PaySlips getPaySlipsForPayrun(UUID payrunID) throws IOException {
+          try {
+              String strBody = null;
+              Map<String, String> params = null;
+              String correctPath = "/paySlips/{PayrunID}";
+              // Hacky path manipulation to support different return types from same endpoint
+              String path = "/paySlips/{PayrunID}";
+              String type = "/pdf";
+              if(path.toLowerCase().contains(type.toLowerCase())) {
+                  correctPath = path.replace("/pdf","");
+              } 
+
+              // create a map of path variables
+              final Map<String, String> uriVariables = new HashMap<String, String>();
+              uriVariables.put("PayrunID", payrunID.toString());
+              UriBuilder uriBuilder = UriBuilder.fromUri(apiClient.getBasePath() + correctPath);
+              String url = uriBuilder.buildFromMap(uriVariables).toString();
+
+              String response = this.DATA(url, strBody, params, "GET");
+
+              PayrollResponse pr = gson.fromJson(response, PayrollResponse.class); 
+              
+              PaySlips ps = new PaySlips();
+      		  ps.setPaySlips(pr.getPaySlips());
+      		
+      		  return ps;                    
+
+          } catch (IOException e) {
+              throw xeroExceptionHandler.handleBadRequest(e.getMessage());
+          } catch (XeroApiException e) {
+              throw xeroExceptionHandler.handleBadRequest(e.getMessage(), e.getResponseCode(),JSONUtils.isJSONValid(e.getMessage()));
+          }
+      }
+     
+      
      /**
       * Allows you to retrieve SalaryAndWages for an employee
       * <p><b>200</b> - Success - return response of type SalaryAndWages array with a unique SalaryAndWage

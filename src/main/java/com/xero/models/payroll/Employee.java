@@ -36,6 +36,9 @@ public class Employee {
   @JsonProperty("dateOfBirth")
   private LocalDate dateOfBirth;
   
+  @JsonProperty("gender")
+  private String gender;
+  
   @JsonProperty("email")
   private String email;
   
@@ -45,6 +48,12 @@ public class Employee {
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("startDate")
   private LocalDate startDate;
+  
+  @JsonProperty("nationalInsuranceNumber")
+  private String nationalInsuranceNumber;
+  
+  @JsonProperty("address")
+  private Address address;
   
   @JsonProperty("payrollCalendarID")
   private UUID payrollCalendarID;
@@ -129,6 +138,22 @@ public class Employee {
     this.dateOfBirth = dateOfBirth;
   }
   
+  public Employee gender(String gender) {
+    this.gender = gender;
+    return this;
+  }
+  /**
+   * The employee’s gender (F or M)
+   * @return gender
+  **/
+  @ApiModelProperty(required = false, value = "The employee’s gender (F or M)")
+  public String getGender() {
+    return gender;
+  }
+  public void setGender(String gender) {
+    this.gender = gender;
+  }
+  
   public Employee email(String email) {
     this.email = email;
     return this;
@@ -175,6 +200,38 @@ public class Employee {
   }
   public void setStartDate(LocalDate startDate) {
     this.startDate = startDate;
+  }
+  
+  public Employee nationalInsuranceNumber(String nationalInsuranceNumber) {
+    this.nationalInsuranceNumber = nationalInsuranceNumber;
+    return this;
+  }
+  /**
+   * National insurance number of the employee
+   * @return nationalInsuranceNumber
+  **/
+  @ApiModelProperty(required = false, value = "National insurance number of the employee")
+  public String getNationalInsuranceNumber() {
+	 return nationalInsuranceNumber;
+  }
+  public void setNationalInsuranceNumber(String nationalInsuranceNumber) {
+	 this.nationalInsuranceNumber = nationalInsuranceNumber;
+  }
+  
+  public Employee address(Address address) {
+    this.address = address;
+    return this;
+  }
+  /**
+   * Employee home address. See Address.
+   * @return address
+  **/
+  @ApiModelProperty(value = "Employee home address. See Address.")
+  public Address getAddress() {
+	 return address;
+  }
+  public void setAddress(Address address) {
+	 this.address = address;
   }
   
   public Employee payrollCalendarID(UUID payrollCalendarID) {

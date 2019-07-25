@@ -25,7 +25,7 @@ public class EarningsLine {
   private Double ratePerUnit;
   
   @JsonProperty("numberOfUnits")
-  private Integer numberOfUnits;
+  private Double numberOfUnits;
   
   @JsonProperty("fixedAmount")
   private Double fixedAmount;
@@ -72,7 +72,7 @@ public class EarningsLine {
 	 this.ratePerUnit = ratePerUnit;
   } 
   
-  public EarningsLine numberOfUnits(Integer numberOfUnits) {
+  public EarningsLine numberOfUnits(Double numberOfUnits) {
 	 this.numberOfUnits = numberOfUnits;
 	 return this;
   }
@@ -81,10 +81,10 @@ public class EarningsLine {
 	* @return numberOfUnits
   **/
   @ApiModelProperty(required = false, value = "Earnings number of units")
-  public Integer getNumberOfUnits() {
+  public Double getNumberOfUnits() {
 	 return numberOfUnits;
   }
-  public void setNumberOfUnits(Integer numberOfUnits) {
+  public void setNumberOfUnits(Double numberOfUnits) {
 	 this.numberOfUnits = numberOfUnits;
   }
   

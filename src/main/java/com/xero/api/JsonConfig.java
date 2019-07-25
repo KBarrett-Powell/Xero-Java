@@ -401,7 +401,7 @@ public class JsonConfig implements Config {
 	    }
 	
 	    if (jsonObject.containsKey("DecimalPlaces")) {
-	    		DECIMAL_PLACES = (String) jsonObject.get("DecimalPlaces");
+	    	DECIMAL_PLACES = (String) jsonObject.get("DecimalPlaces");
 	    }
 	    
 	    if (jsonObject.containsKey("KeyStorePath")) {

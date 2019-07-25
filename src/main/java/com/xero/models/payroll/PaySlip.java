@@ -11,7 +11,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import org.threeten.bp.OffsetDateTime;
+
+import org.threeten.bp.LocalDateTime;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
@@ -32,7 +33,7 @@ public class PaySlip {
   
   @JsonDeserialize(using = com.xero.api.CustomOffsetDateTimeDeserializer.class)
   @JsonProperty("LastEdited")
-  private OffsetDateTime lastEdited;
+  private LocalDateTime lastEdited;
   
   @JsonProperty("FirstName")
   private String firstName;
@@ -161,7 +162,7 @@ public class PaySlip {
 	this.payRunID = payRunID;
   } 
   
-  public PaySlip lastEdited(OffsetDateTime lastEdited) {
+  public PaySlip lastEdited(LocalDateTime lastEdited) {
 	this.lastEdited = lastEdited;
 	return this;
   }
@@ -170,10 +171,10 @@ public class PaySlip {
    * @return lastEdited
   **/
   @ApiModelProperty(value = "The date payslip was last updated")
-  public OffsetDateTime getLastEdited() {
+  public LocalDateTime getLastEdited() {
     return lastEdited;
   }
-  public void setLastEdited(OffsetDateTime lastEdited) {
+  public void setLastEdited(LocalDateTime lastEdited) {
 	this.lastEdited = lastEdited;
   } 
   
